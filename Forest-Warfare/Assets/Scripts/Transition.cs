@@ -10,13 +10,16 @@ public class Transition : MonoBehaviour
 
     public void Start()
     {
-        fader.gameObject.SetActive(true);
-
-        LeanTween.scale(fader, new Vector3(1, 1, 1), 0).setIgnoreTimeScale(true);
-        LeanTween.scale(fader, Vector3.zero, 0.5f).setEase(LeanTweenType.easeInOutQuad).setIgnoreTimeScale(true).setOnComplete(() =>
+        if (fader)
         {
-            fader.gameObject.SetActive(false);
-        });
+            fader.gameObject.SetActive(true);
+
+            LeanTween.scale(fader, new Vector3(1, 1, 1), 0).setIgnoreTimeScale(true);
+            LeanTween.scale(fader, Vector3.zero, 0.5f).setEase(LeanTweenType.easeInOutQuad).setIgnoreTimeScale(true).setOnComplete(() =>
+            {
+                fader.gameObject.SetActive(false);
+            });
+        }
     }
 
     public void StartTransition(string level)
@@ -62,5 +65,21 @@ public class Transition : MonoBehaviour
     {
         yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(levelToLoad); 
+    }
+
+    public void LoadLevelSelect()
+    {
+        SceneManager.LoadScene("LevelSelect");
+    }
+    public void TransitionToMainMenu()
+    {
+        fader.gameObject.SetActive(true);
+
+        LeanTween.scale(fader, Vector3.zero, 0f).setIgnoreTimeScale(true);
+        LeanTween.scale(fader, new Vector3(1, 1, 1), 0.5f).setEase(LeanTweenType.easeInOutQuad).setIgnoreTimeScale(true).setOnComplete(() =>
+        {
+            levelToLoad = "MainMenu";
+            StartCoroutine(Load());
+        });
     }
 }

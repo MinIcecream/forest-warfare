@@ -20,6 +20,7 @@ TagManager:
   - TransitionCanvas
   - DeathCanvas
   - VictoryCanvas
+  - PauseManager
   layers:
   - Default
   - TransparentFX

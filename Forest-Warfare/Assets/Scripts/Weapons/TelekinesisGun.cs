@@ -56,7 +56,7 @@ public class TelekinesisGun : MonoBehaviour
         }
 
 
-        if (dragging && hitObject != null && chargeScript.canShoot == true && PauseManager.paused == false)
+        if (dragging && hitObject != null && chargeScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
             if(hitObject.GetComponent<MouseDrag>() != null && hitObject.GetComponent<Outline>()!=null)
             hitObject.GetComponent<MouseDrag>().drag = true;

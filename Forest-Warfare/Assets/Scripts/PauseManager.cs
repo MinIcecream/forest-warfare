@@ -6,7 +6,7 @@ public class PauseManager : MonoBehaviour
 {
     public GameObject panel;
     public Animator anim;
-    public static bool paused;
+    public bool paused;
 
     public void Pause()
     {

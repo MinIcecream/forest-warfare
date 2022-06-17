@@ -10,7 +10,7 @@ public class RocketLauncher : MonoBehaviour
     public WeaponAmmo ammoScript;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) &&ammoScript.canShoot && PauseManager.paused == false)
+        if (Input.GetMouseButtonDown(0) &&ammoScript.canShoot && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
  
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));

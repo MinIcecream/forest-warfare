@@ -38,7 +38,7 @@ public class Spear : MonoBehaviour
         {
             initialPos = (Vector3)Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
         }
-        if (Input.GetMouseButtonUp(0) && ammoScript.canShoot == true && PauseManager.paused == false)
+        if (Input.GetMouseButtonUp(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
             finalPos = (Vector3)Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             

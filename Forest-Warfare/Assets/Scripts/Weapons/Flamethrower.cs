@@ -26,7 +26,7 @@ public class Flamethrower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && chargeScript.canShoot == true && PauseManager.paused == false)
+        if (Input.GetMouseButton(0) && chargeScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
             ParticleSystem.EmissionModule em = flames.emission;
             em.enabled = true;
