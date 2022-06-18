@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pistol : MonoBehaviour
+public class Sniper : MonoBehaviour
 {
     public GameObject bullet;
     public GameObject player;

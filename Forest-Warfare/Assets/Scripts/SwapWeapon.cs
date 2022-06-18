@@ -58,9 +58,21 @@ public class SwapWeapon : MonoBehaviour
         {
             transform.Find("Rocket Launcher Parent").gameObject.SetActive(true);
         }
-        else if (weapon == "lightningGun")
+        else if (weapon == "ak47")
         {
-            transform.Find("Lightning Gun Parent").gameObject.SetActive(true);
+            transform.Find("Ak47 Parent").gameObject.SetActive(true);
+        }
+        else if (weapon == "minigun")
+        {
+            transform.Find("Minigun Parent").gameObject.SetActive(true);
+        }
+        else if (weapon == "sniper")
+        {
+            transform.Find("Sniper Parent").gameObject.SetActive(true);
+        }
+        else if (weapon == "shotgun")
+        {
+            transform.Find("Shotgun Parent").gameObject.SetActive(true);
         }
         else
         {

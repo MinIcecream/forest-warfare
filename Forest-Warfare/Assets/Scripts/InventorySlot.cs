@@ -37,6 +37,7 @@ public class InventorySlot : MonoBehaviour
         {
             weaponImage.SetActive(true);
             image.overrideSprite = Resources.Load<Sprite>("Weapons/" + weapon.name);
+            image.preserveAspect = true;
         }
         else
         {

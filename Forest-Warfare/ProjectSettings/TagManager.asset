@@ -21,6 +21,7 @@ TagManager:
   - DeathCanvas
   - VictoryCanvas
   - PauseManager
+  - CameraParent
   layers:
   - Default
   - TransparentFX

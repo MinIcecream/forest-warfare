@@ -17,6 +17,8 @@ public class WeaponAmmo : MonoBehaviour
 
     AmmoCounterUI ammoUI;
 
+    Coroutine reload;
+
     void Awake()
     {
         currentAmmo = maxAmmo;
@@ -40,14 +42,9 @@ public class WeaponAmmo : MonoBehaviour
     {
         if (currentAmmo <= 0 && reloading == false)
         {
-            StartCoroutine(Reload());
+            reload=StartCoroutine(Reload());
         }
 
-        if (Input.GetMouseButtonDown(0) && currentAmmo > 0 && !reloading)
-        {
-            currentAmmo--;
-            ammoUI.SetAmmo(currentAmmo, maxAmmo);
-        }
 
         else if(currentAmmo > 0)
         {
@@ -57,7 +54,35 @@ public class WeaponAmmo : MonoBehaviour
         {
             canShoot = false;
         }
+
+        if (Input.GetKeyDown("r"))
+        {
+            reload=StartCoroutine(Reload());
+        }
          
+    }
+
+    public void Shoot()
+    {
+        if (currentAmmo > 0 && !reloading)
+        {
+            currentAmmo--;
+            ammoUI.SetAmmo(currentAmmo, maxAmmo);
+        }
+        else if (currentAmmo > 0 && reloading)
+        {
+            StopCoroutine(reload);
+            reloading = false;
+            currentAmmo--;
+            ammoUI.SetAmmo(currentAmmo, maxAmmo);
+            reloading = false;
+        }
+
+        else if (currentAmmo > 0 && !reloading)
+        {
+            currentAmmo--;
+            ammoUI.SetAmmo(currentAmmo, maxAmmo);
+        }
     }
     IEnumerator Reload()
     {

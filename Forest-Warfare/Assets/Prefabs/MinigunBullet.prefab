@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 6539281328259506052}
   - component: {fileID: 7942187126058428010}
   m_Layer: 11
-  m_Name: Bullet
+  m_Name: MinigunBullet
   m_TagString: Player Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -130,7 +130,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055601f027c57f94bb00cac5711a905a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 10
 --- !u!114 &1214356406812531583
 MonoBehaviour:
   m_ObjectHideFlags: 0
