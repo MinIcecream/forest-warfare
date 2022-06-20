@@ -75,7 +75,6 @@ public class WeaponAmmo : MonoBehaviour
             reloading = false;
             currentAmmo--;
             ammoUI.SetAmmo(currentAmmo, maxAmmo);
-            reloading = false;
         }
 
         else if (currentAmmo > 0 && !reloading)

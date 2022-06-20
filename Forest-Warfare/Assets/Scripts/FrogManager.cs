@@ -1,11 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
-public class BombManager : MonoBehaviour
+public class FrogManager : MonoBehaviour
 {
     GameObject player;
-    EnemyFSM bombMode = EnemyFSM.Wander;
+    EnemyFSM frogMode = EnemyFSM.Wander;
     private Animator anim;
     public bool isAttacking;
     float lastPos = 0;
@@ -19,6 +20,12 @@ public class BombManager : MonoBehaviour
     public Explode explosion;
 
     public FieldOfView FOV;
+
+
+    public bool grounded = true;
+    public float checkRadius;
+    public LayerMask whatIsGround;
+    public Transform feet;
 
     void Awake()
     {
@@ -54,7 +61,7 @@ public class BombManager : MonoBehaviour
         if (isAttacking == false)
         {
             isAttacking = true;
-            anim.SetTrigger("Attack");
+            anim.SetTrigger("Explode");
             StartCoroutine(AttackAnimDuration());
         }
     }
@@ -76,6 +83,8 @@ public class BombManager : MonoBehaviour
 
     public void Update()
     {
+        grounded = Physics2D.OverlapCircle(feet.position, checkRadius, whatIsGround);
+        
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
             dead = true;
@@ -88,40 +97,48 @@ public class BombManager : MonoBehaviour
             float height = transform.position.y - player.transform.position.y;
             float angle = Mathf.Atan(transform.position.y - player.transform.position.y / transform.position.x - player.transform.position.x);
 
-            switch (bombMode)
+            switch (frogMode)
             {
                 case EnemyFSM.Attack:
                     if (Vector3.Distance(transform.position, player.transform.position) > 3 && isAttacking == false)
                     {
-                        bombMode = EnemyFSM.Wander;
+                        frogMode = EnemyFSM.Wander;
                     }
                     break;
                 case EnemyFSM.Wander:
 
                     if (FOV.visibleTargets.Count > 0)
                     {
-                        bombMode = EnemyFSM.Chase;
+                        frogMode = EnemyFSM.Chase;
                     }
                     break;
                 case EnemyFSM.Chase:
-                    if (FOV.visibleTargets.Count == 0)
+                    if (FOV.visibleTargets.Count == 0&&grounded)
                     {
-                        bombMode = EnemyFSM.Wander;
+                        frogMode = EnemyFSM.Wander;
                     }
-                    if (Vector3.Distance(transform.position, player.transform.position) <= 3)
+                    if (Vector3.Distance(transform.position, player.transform.position) <= 3 &&grounded)
                     {
-                        bombMode = EnemyFSM.Attack;
+                        frogMode = EnemyFSM.Attack;
                     }
                     anim.SetFloat("speed", 0);
                     break;
             }
         }
 
-        DoAction(bombMode);
+        DoAction(frogMode);
     }
     public IEnumerator AttackAnimDuration()
     {
         yield return new WaitForSeconds(1);
         explosion.Explosion();
+    }
+    public IEnumerator JumpAnimDuration(){
+        if(Vector3.Distance(transform.position, player.transform.position) > 7){
+            
+        }
+        else{
+
+        }
     }
 }
