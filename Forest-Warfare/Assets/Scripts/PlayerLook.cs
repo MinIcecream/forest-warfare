@@ -24,4 +24,10 @@ public class PlayerLook : MonoBehaviour
     {
         return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
+
+    public void Shake(int min, int max)
+    {
+        float random = Random.Range(min, max);
+        transform.Rotate(new Vector3(0f, 0f, random));
+    }
 }

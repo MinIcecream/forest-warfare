@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class InventorySlot : MonoBehaviour
 {
-    public Weapon weapon;
+    public string weapon="";
     private Image image;
     public GameObject weaponImage;
     private Image slotImage;
@@ -17,7 +17,14 @@ public class InventorySlot : MonoBehaviour
         image = weaponImage.GetComponent<Image>();
         slotImage = GetComponent<Image>();
     }
-
+    public string GetWeaponName()
+    {
+        if (weapon!="")
+        {
+            return weapon;
+        }
+        return "none";
+    }
     void Update()
     {
         if (isSelected)
@@ -33,10 +40,10 @@ public class InventorySlot : MonoBehaviour
             slotImage.color = color;
         }
 
-        if (weapon != null)
+        if (weapon != "")
         {
             weaponImage.SetActive(true);
-            image.overrideSprite = Resources.Load<Sprite>("Weapons/" + weapon.name);
+            image.overrideSprite = Resources.Load<Sprite>("Weapons/" + weapon);
             image.preserveAspect = true;
         }
         else
@@ -49,7 +56,7 @@ public class InventorySlot : MonoBehaviour
         isSelected = true;
     }
 
-    public void SetWeapon(Weapon newWeapon)
+    public void SetWeapon(string newWeapon)
     {
         weapon = newWeapon;
     }

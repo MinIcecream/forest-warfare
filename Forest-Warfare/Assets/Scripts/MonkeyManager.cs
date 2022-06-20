@@ -69,7 +69,7 @@ public class MonkeyManager : MonoBehaviour
             lastPos = transform.position.x;
             anim.SetFloat("speed", speed);
 
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 3*Time.deltaTime); 
+            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 5*Time.deltaTime); 
         }
     }
 

@@ -9,6 +9,7 @@ public class Minigun : MonoBehaviour
     public WeaponAmmo ammoScript;
     public Transform spawnPt;
 
+    public PlayerLook rotate;
 
     bool shooting = false;
 
@@ -32,13 +33,13 @@ public class Minigun : MonoBehaviour
         while (shooting)
         {
 
+            rotate.Shake(-5,5);
             ammoScript.Shoot();
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             Vector2 objPos = player.transform.position;
 
             var newBullet = Instantiate(bullet, spawnPt.position, Quaternion.identity);
             newBullet.GetComponent<BulletProjectile>().dir = (mousePos - objPos).normalized;
-
             yield return new WaitForSeconds(0.06f);
         }
     }

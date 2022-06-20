@@ -8,7 +8,7 @@ public class Ak47 : MonoBehaviour
     public GameObject player;
     public WeaponAmmo ammoScript;
     public Transform spawnPt;
-
+    public PlayerLook rotate;
 
     bool shooting = false;
 
@@ -33,12 +33,12 @@ public class Ak47 : MonoBehaviour
         {
 
             ammoScript.Shoot();
+            rotate.Shake(-5,5);
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             Vector2 objPos = player.transform.position;
 
             var newBullet = Instantiate(bullet, spawnPt.position, Quaternion.identity);
             newBullet.GetComponent<BulletProjectile>().dir = (mousePos - objPos).normalized;
-
             yield return new WaitForSeconds(0.15f);
         }
     }

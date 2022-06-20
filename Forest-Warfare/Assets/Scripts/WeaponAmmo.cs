@@ -55,7 +55,7 @@ public class WeaponAmmo : MonoBehaviour
             canShoot = false;
         }
 
-        if (Input.GetKeyDown("r"))
+        if (Input.GetKeyDown("r")&& currentAmmo!=maxAmmo)
         {
             reload=StartCoroutine(Reload());
         }

@@ -31,9 +31,17 @@ public class InteractableWeapon : MonoBehaviour
 
         if (popup.activeInHierarchy == true && Input.GetKeyDown("e"))
         {
-            string currentWeapon = weapon;
-            SetSprite(inventoryManager.inventoryWeapons[inventoryManager.activeSlot - 1].name);
-            inventoryManager.SwapItem(currentWeapon);
+            if(inventoryManager.inventoryWeapons[inventoryManager.activeSlot - 1]==null)
+            {
+                SetSprite("");
+            }
+            else
+            {
+
+                string currentWeapon = weapon;
+                SetSprite(inventoryManager.inventoryWeapons[inventoryManager.activeSlot - 1]);
+                inventoryManager.SwapItem(currentWeapon);
+            } 
              
         }
     }
@@ -76,6 +84,14 @@ public class InteractableWeapon : MonoBehaviour
     public void SetSprite(string newWeapon)
     {
         weapon = newWeapon;
-        spriteRenderer.sprite = Resources.Load<Sprite>("Weapons/" + weapon);
+        if (newWeapon == "")
+        {
+            Destroy(this.gameObject);
+            spriteRenderer.sprite = null;
+        }
+        else
+        {
+            spriteRenderer.sprite = Resources.Load<Sprite>("Weapons/" + weapon);
+        }  
     }
 }

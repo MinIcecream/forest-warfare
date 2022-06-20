@@ -8,7 +8,7 @@ public class Pistol : MonoBehaviour
     public GameObject player;
     public WeaponAmmo ammoScript;
     public Transform spawnPt;
-
+    public GameObject parent;
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
@@ -19,6 +19,7 @@ public class Pistol : MonoBehaviour
 
             var newBullet = Instantiate(bullet, spawnPt.position, Quaternion.identity);
             newBullet.GetComponent<BulletProjectile>().dir = (mousePos - objPos).normalized;
+
         }
     }
 }

@@ -8,7 +8,6 @@ public class Sniper : MonoBehaviour
     public GameObject player;
     public WeaponAmmo ammoScript;
     public Transform spawnPt;
-
     void Update()
     {
         if (Input.GetMouseButtonDown(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
