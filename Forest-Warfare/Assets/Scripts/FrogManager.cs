@@ -6,10 +6,11 @@ using UnityEditor;
 public class FrogManager : MonoBehaviour
 {
     GameObject player;
+
+    [SerializeField]
     EnemyFSM frogMode = EnemyFSM.Wander;
     private Animator anim;
     public bool isAttacking;
-    float lastPos = 0;
 
     public AudioSource deathSound;
 
@@ -20,7 +21,7 @@ public class FrogManager : MonoBehaviour
     public Explode explosion;
 
     public FieldOfView FOV;
-
+    public bool canJump = true;
 
     public bool grounded = true;
     public float checkRadius;
@@ -61,8 +62,7 @@ public class FrogManager : MonoBehaviour
         if (isAttacking == false)
         {
             isAttacking = true;
-            anim.SetTrigger("Explode");
-            StartCoroutine(AttackAnimDuration());
+            StartCoroutine(AttackCheck());
         }
     }
     public void Wander()
@@ -71,20 +71,31 @@ public class FrogManager : MonoBehaviour
     }
     public void Chase()
     {
-        if (player)
+        if (player&&grounded&&canJump)
         {
-            float speed = Mathf.Abs((transform.position.x - lastPos)) * 200f;
-            lastPos = transform.position.x;
-            anim.SetFloat("speed", speed);
+            canJump = false;
 
-            transform.position = Vector2.MoveTowards(transform.position, player.transform.position, 3 * Time.deltaTime);
+            if (Vector2.Distance(transform.position, player.transform.position) > 7)
+            {
+                Debug.Log("Long jump");
+                Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y+10);
+                GetComponent<Rigidbody2D>().AddForce(dir.normalized * 800);
+                StartCoroutine(JumpCooldown());
+            }
+            else
+            {
+                Debug.Log("short jump");
+                Vector2 dir = new Vector2(50*(player.transform.position.x - transform.position.x), player.transform.position.y - transform.position.y + 400);
+                GetComponent<Rigidbody2D>().AddForce(dir);
+                StartCoroutine(JumpCooldown());
+            }
         }
     }
 
     public void Update()
     {
         grounded = Physics2D.OverlapCircle(feet.position, checkRadius, whatIsGround);
-        
+        anim.SetBool("grounded", grounded);
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
             dead = true;
@@ -100,28 +111,26 @@ public class FrogManager : MonoBehaviour
             switch (frogMode)
             {
                 case EnemyFSM.Attack:
-                    if (Vector3.Distance(transform.position, player.transform.position) > 3 && isAttacking == false)
+                    if (Vector2.Distance(transform.position, player.transform.position) > 3 && isAttacking == false)
                     {
                         frogMode = EnemyFSM.Wander;
                     }
                     break;
                 case EnemyFSM.Wander:
-
-                    if (FOV.visibleTargets.Count > 0)
-                    {
-                        frogMode = EnemyFSM.Chase;
-                    }
-                    break;
-                case EnemyFSM.Chase:
-                    if (FOV.visibleTargets.Count == 0&&grounded)
-                    {
-                        frogMode = EnemyFSM.Wander;
-                    }
-                    if (Vector3.Distance(transform.position, player.transform.position) <= 3 &&grounded)
+                    if (Vector2.Distance(transform.position, player.transform.position) <= 3)
                     {
                         frogMode = EnemyFSM.Attack;
                     }
-                    anim.SetFloat("speed", 0);
+                    else if (FOV.visibleTargets.Count > 0)
+                    {
+                        frogMode = EnemyFSM.Chase;
+                    } 
+                    break;
+                case EnemyFSM.Chase:
+                    if (FOV.visibleTargets.Count == 0)
+                    {
+                        frogMode = EnemyFSM.Wander;
+                    }
                     break;
             }
         }
@@ -130,15 +139,27 @@ public class FrogManager : MonoBehaviour
     }
     public IEnumerator AttackAnimDuration()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(2);
         explosion.Explosion();
     }
-    public IEnumerator JumpAnimDuration(){
-        if(Vector3.Distance(transform.position, player.transform.position) > 7){
-            
-        }
-        else{
+    public IEnumerator JumpCooldown()
+    {
+        yield return new WaitForSeconds(2f);
+        canJump = true;
+    }
 
+    public IEnumerator AttackCheck()
+    {
+        yield return new WaitForSeconds(.75f);
+        if (Vector2.Distance(transform.position, player.transform.position) <= 3)
+        {
+            anim.SetTrigger("Explode");
+            StartCoroutine(AttackAnimDuration());
         }
+        else
+        {
+            isAttacking = false;
+        }
+        yield break;
     }
 }
