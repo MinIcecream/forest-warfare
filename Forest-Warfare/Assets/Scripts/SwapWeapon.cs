@@ -74,6 +74,10 @@ public class SwapWeapon : MonoBehaviour
         {
             transform.Find("Shotgun Parent").gameObject.SetActive(true);
         }
+        else if (weapon == "plasmaPistol")
+        {
+            transform.Find("Plasma Pistol Parent").gameObject.SetActive(true);
+        }
         else if(weapon=="none")
         {
 

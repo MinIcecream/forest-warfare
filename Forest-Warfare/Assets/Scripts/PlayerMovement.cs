@@ -4,7 +4,7 @@ using System.Collections;
 
 public class PlayerMovement : MonoBehaviour
 {
-    private float movementSpeed = 15f;
+    private float movementSpeed = 10f;
     private Vector2 jumpForce = new Vector2(0, 20);
     private Vector2 SlamForce = new Vector2(0, -25);
     private Vector2 dashForce = new Vector2(30, 0);
@@ -30,8 +30,9 @@ public class PlayerMovement : MonoBehaviour
     private float dashInputTimer = 0.5f;
     private bool startDashTimer = false;
     private string previousKey;
-
+    public float dashCooldown = 2f;
     float dashTime = 0.3f;
+    bool canDash = true;
 
     bool walking = false;
     public FlipPlayer facingDir;
@@ -39,6 +40,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
 
     public GameObject slamColl;
+
 
     void Update()
     {
@@ -81,7 +83,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (startDashTimer)
             {
-                if (dashInputTimer >= 0 && previousKey == "d")
+                if (dashInputTimer >= 0 && previousKey == "d"&&canDash)
                 {
                     RequestAction("dash");
                     ResetDashTimer();
@@ -98,8 +100,8 @@ public class PlayerMovement : MonoBehaviour
         {
             if (startDashTimer)
             {
-                if (dashInputTimer >= 0 && previousKey == "a")
-                {
+                if (dashInputTimer >= 0 && previousKey == "a"&&canDash)
+                { 
                     RequestAction("dash");
                     ResetDashTimer();
                 }
@@ -130,7 +132,11 @@ public class PlayerMovement : MonoBehaviour
         startDashTimer = false;
         dashInputTimer = 0.2f;
     }
-
+    IEnumerator DashCooldown()
+    {
+        yield return new WaitForSeconds(dashCooldown);
+        canDash = true;
+    }
     IEnumerator Countdown(float time)
     {
         float counter = time;
@@ -144,6 +150,8 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
+        canDash = false;
+        StartCoroutine(DashCooldown());
         StartCoroutine(Countdown(dashTime));
         rb.velocity = Vector3.zero;
         rb.gravityScale = 0f;

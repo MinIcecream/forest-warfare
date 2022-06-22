@@ -74,17 +74,15 @@ public class FrogManager : MonoBehaviour
         if (player&&grounded&&canJump)
         {
             canJump = false;
-
+            Instantiate(Resources.Load<GameObject>("Dust"), feet.position, Quaternion.identity);
             if (Vector2.Distance(transform.position, player.transform.position) > 7)
             {
-                Debug.Log("Long jump");
                 Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y+10);
                 GetComponent<Rigidbody2D>().AddForce(dir.normalized * 800);
                 StartCoroutine(JumpCooldown());
             }
             else
             {
-                Debug.Log("short jump");
                 Vector2 dir = new Vector2(50*(player.transform.position.x - transform.position.x), player.transform.position.y - transform.position.y + 400);
                 GetComponent<Rigidbody2D>().AddForce(dir);
                 StartCoroutine(JumpCooldown());
@@ -144,7 +142,7 @@ public class FrogManager : MonoBehaviour
     }
     public IEnumerator JumpCooldown()
     {
-        yield return new WaitForSeconds(2f);
+        yield return new WaitForSeconds(2.5f);
         canJump = true;
     }
 
