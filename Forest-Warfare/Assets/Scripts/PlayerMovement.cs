@@ -32,7 +32,6 @@ public class PlayerMovement : MonoBehaviour
     private string previousKey;
     public float dashCooldown = 2f;
     float dashTime = 0.3f;
-    bool canDash = true;
 
     bool walking = false;
     public FlipPlayer facingDir;
@@ -40,7 +39,7 @@ public class PlayerMovement : MonoBehaviour
     public bool canMove = true;
 
     public GameObject slamColl;
-
+    public int staminaCost = 50;
 
     void Update()
     {
@@ -83,7 +82,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (startDashTimer)
             {
-                if (dashInputTimer >= 0 && previousKey == "d"&&canDash)
+                if (dashInputTimer >= 0 && previousKey == "d")
                 {
                     RequestAction("dash");
                     ResetDashTimer();
@@ -100,7 +99,7 @@ public class PlayerMovement : MonoBehaviour
         {
             if (startDashTimer)
             {
-                if (dashInputTimer >= 0 && previousKey == "a"&&canDash)
+                if (dashInputTimer >= 0 && previousKey == "a")
                 { 
                     RequestAction("dash");
                     ResetDashTimer();
@@ -132,11 +131,6 @@ public class PlayerMovement : MonoBehaviour
         startDashTimer = false;
         dashInputTimer = 0.2f;
     }
-    IEnumerator DashCooldown()
-    {
-        yield return new WaitForSeconds(dashCooldown);
-        canDash = true;
-    }
     IEnumerator Countdown(float time)
     {
         float counter = time;
@@ -150,8 +144,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Dash()
     {
-        canDash = false;
-        StartCoroutine(DashCooldown());
+        PlayerStamina stam = GetComponent<PlayerStamina>();
+        if (stam.getStamina() < staminaCost)
+        {
+            return;
+        }
+        stam.UseStamina(staminaCost);
         StartCoroutine(Countdown(dashTime));
         rb.velocity = Vector3.zero;
         rb.gravityScale = 0f;

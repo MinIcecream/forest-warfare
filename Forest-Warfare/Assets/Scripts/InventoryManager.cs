@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class InventoryManager : MonoBehaviour
 {
+    public Vector2 pos1, pos2, pos3;
     public List<string> inventoryWeapons = new List<string>(3);
 
     public List<GameObject> weaponSlots = new List<GameObject>(3);
@@ -85,24 +86,27 @@ public class InventoryManager : MonoBehaviour
             UnselectAll();
             activeSlot = 1;
             weaponSlots[0].GetComponent<InventorySlot>().Select();
+            RotateSlots();
         }
         if (Input.GetKeyDown("2"))
         {
             UnselectAll();
             activeSlot = 2;
             weaponSlots[1].GetComponent<InventorySlot>().Select();
+            RotateSlots();
         }
         if (Input.GetKeyDown("3"))
         {
             UnselectAll();
             activeSlot = 3;
             weaponSlots[2].GetComponent<InventorySlot>().Select();
+            RotateSlots();
         }
 
         var d = Input.GetAxis("Mouse ScrollWheel");
 
         if (d < 0f)
-        {
+        { 
             if (weaponSlots[0].GetComponent<InventorySlot>().isSelected)
             {
                 UnselectAll();
@@ -121,6 +125,7 @@ public class InventoryManager : MonoBehaviour
                 activeSlot = 1;
                 weaponSlots[0].GetComponent<InventorySlot>().Select();
             }
+            RotateSlots();
         }
         if (d > 0f)
         {
@@ -142,6 +147,15 @@ public class InventoryManager : MonoBehaviour
                 activeSlot = 1;
                 weaponSlots[0].GetComponent<InventorySlot>().Select();
             }
+            RotateSlots();
+        }
+    }
+
+    void RotateSlots()
+    {
+        foreach(GameObject slot in weaponSlots)
+        {
+            slot.GetComponent<InventorySlot>().SetPos(activeSlot);
         }
     }
 }

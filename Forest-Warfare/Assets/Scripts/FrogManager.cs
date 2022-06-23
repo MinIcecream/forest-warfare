@@ -78,6 +78,7 @@ public class FrogManager : MonoBehaviour
             if (Vector2.Distance(transform.position, player.transform.position) > 7)
             {
                 Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y+10);
+                Debug.Log(dir.normalized * 800);
                 GetComponent<Rigidbody2D>().AddForce(dir.normalized * 800);
                 StartCoroutine(JumpCooldown());
             }
@@ -85,6 +86,7 @@ public class FrogManager : MonoBehaviour
             {
                 Vector2 dir = new Vector2(50*(player.transform.position.x - transform.position.x), player.transform.position.y - transform.position.y + 400);
                 GetComponent<Rigidbody2D>().AddForce(dir);
+                Debug.Log(dir);
                 StartCoroutine(JumpCooldown());
             }
         }
@@ -109,13 +111,13 @@ public class FrogManager : MonoBehaviour
             switch (frogMode)
             {
                 case EnemyFSM.Attack:
-                    if (Vector2.Distance(transform.position, player.transform.position) > 3 && isAttacking == false)
+                    if (Vector2.Distance(transform.position, player.transform.position) > 7 && isAttacking == false)
                     {
                         frogMode = EnemyFSM.Wander;
                     }
                     break;
                 case EnemyFSM.Wander:
-                    if (Vector2.Distance(transform.position, player.transform.position) <= 3)
+                    if (Vector2.Distance(transform.position, player.transform.position) <= 7)
                     {
                         frogMode = EnemyFSM.Attack;
                     }
@@ -149,7 +151,7 @@ public class FrogManager : MonoBehaviour
     public IEnumerator AttackCheck()
     {
         yield return new WaitForSeconds(.75f);
-        if (Vector2.Distance(transform.position, player.transform.position) <= 3)
+        if (Vector2.Distance(transform.position, player.transform.position) <= 7)
         {
             anim.SetTrigger("Explode");
             StartCoroutine(AttackAnimDuration());

@@ -9,7 +9,7 @@ public class InventorySlot : MonoBehaviour
     private Image image;
     public GameObject weaponImage;
     private Image slotImage;
-
+    public int slotNum;
     public bool isSelected;
 
     void Start()
@@ -26,7 +26,7 @@ public class InventorySlot : MonoBehaviour
         return "none";
     }
     void Update()
-    {
+    {/*
         if (isSelected)
         {
             Color color = slotImage.color;
@@ -38,7 +38,7 @@ public class InventorySlot : MonoBehaviour
             Color color = slotImage.color;
             color.a = 0.2f;
             slotImage.color = color;
-        }
+        }*/
 
         if (weapon != "")
         {
@@ -55,7 +55,6 @@ public class InventorySlot : MonoBehaviour
     {
         isSelected = true;
     }
-
     public void SetWeapon(string newWeapon)
     {
         weapon = newWeapon;
@@ -63,5 +62,57 @@ public class InventorySlot : MonoBehaviour
     public void UnSelect()
     {
         isSelected = false;
+    }
+    public void SetPos(int activeSlot)
+    {
+        switch (activeSlot)
+        {
+            case 1:
+                if (slotNum == 1)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos1, .1f);
+                    transform.SetSiblingIndex(2);
+                }
+                else if (slotNum == 2)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos2, .1f);
+                }
+                else if (slotNum == 3)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos3, .1f);
+                }
+                break;
+            case 2:
+                if (slotNum == 1)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos3, .1f);
+                }
+                else if (slotNum == 2)
+                {
+                    transform.SetSiblingIndex(2);
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos1, .1f);
+                }
+                else if (slotNum == 3)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos2, .1f);
+                }
+                break;
+            case 3:
+                if (slotNum == 1)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos2, .1f);
+                }
+                else if (slotNum == 2)
+                {
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos3, .1f);
+                }
+                else if (slotNum == 3)
+                {
+                    transform.SetSiblingIndex(2);
+                    LeanTween.move(GetComponent<RectTransform>(), transform.parent.gameObject.GetComponent<InventoryManager>().pos1, .1f);
+                }
+                break;
+        }
+      
     }
 }

@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class PlasmaOrb : MonoBehaviour
 {
-    public float intensity;
-
     public Vector3 unnormalizedDir;
     float speed = 10f;
     Rigidbody2D rb;

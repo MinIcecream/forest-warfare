@@ -27,10 +27,13 @@ public class BulletProjectile : MonoBehaviour
     {
         if (!piercing)
         {
+            Instantiate(Resources.Load<GameObject>("Weapons/BulletParticles"), transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
         else if(coll.gameObject.tag != "Enemy")
         {
+            Instantiate(Resources.Load<GameObject>("Weapons/BulletParticles"), transform.position, Quaternion.identity);
+
             Destroy(gameObject);
         } 
     }
