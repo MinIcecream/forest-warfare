@@ -14,6 +14,7 @@ public class Icicle : MonoBehaviour
     {
         if (trigger.trigger && !hitGround)
         {
+            AudioManager.Play("Rock");
             range.SetActive(true);
             rb.gravityScale = 1;
             falling = true;
@@ -21,6 +22,7 @@ public class Icicle : MonoBehaviour
 
         if (coll.gameObject.tag == "Ground" && falling)
         {
+            AudioManager.Play("Rock");
             hitGround = true;
             range.SetActive(false);
             falling = false;

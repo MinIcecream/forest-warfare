@@ -16,7 +16,7 @@ public class AmmoCounterUI : MonoBehaviour
     }
     public void SetReload()
     {
-        tmp.text = "Reloading";
+        tmp.text = "Reloading...";
     }
     public void ShowUI()
     {

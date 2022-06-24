@@ -12,6 +12,7 @@ public class RocketLauncher : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0) &&ammoScript.canShoot && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
+            AudioManager.Play("RocketLauncher");
             ammoScript.Shoot();
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             Vector2 objPos = player.transform.position;

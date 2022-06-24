@@ -84,7 +84,7 @@ public class BirdManager : MonoBehaviour
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
             dead = true;
-            GetComponent<EnemyDeath>().Death(deathSound, deathParticles);
+            GetComponent<EnemyDeath>().Death(deathParticles);
         }
 
         if (player)

@@ -6,6 +6,7 @@ public class PlayerHealth : MonoBehaviour
 {
     private int health;
     public bool dead = false;
+    bool invulnerable = false;
 
     public int getHealth()
     {
@@ -17,12 +18,18 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DealDamage(int damage)
     {
-        health -= damage;
+        if(!invulnerable){
+
+            health -= damage;
+        } 
     }
 
     public void GainHealth(int gain)
     {
-        health += gain;
+        if (!invulnerable)
+        {
+            health += gain;
+        } 
     }
 
     void Update()
@@ -53,5 +60,9 @@ public class PlayerHealth : MonoBehaviour
     void StartDeathTransition()
     {
         GameObject.FindWithTag("DeathCanvas").GetComponent<DeathAndWinTransition>().StartTransition();
+    }
+    public void SetInvulnerable(bool r)
+    {
+        invulnerable = r;
     }
 }

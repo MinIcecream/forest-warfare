@@ -27,6 +27,7 @@ public class DeathAndWinTransition : MonoBehaviour
     }
     public void LoadLevelSelect()
     {
+        AudioManager.Stop("Music");
         SceneManager.LoadScene("LevelSelect");
     }
     public void RestartLevel()

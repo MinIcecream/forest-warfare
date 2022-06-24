@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5873795793323529865}
   - component: {fileID: 5873795793323529870}
   - component: {fileID: 5873795793323529871}
+  - component: {fileID: 1632154287452943309}
   m_Layer: 19
   m_Name: EncounterBarrier
   m_TagString: Untagged
@@ -79,3 +80,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.9570198, y: 62.280823}
   m_EdgeRadius: 0
+--- !u!114 &1632154287452943309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5873795793323529868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62d557fbc8d9f2a4dac9ce21263b1f46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

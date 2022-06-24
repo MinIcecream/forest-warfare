@@ -22,6 +22,7 @@ TagManager:
   - VictoryCanvas
   - PauseManager
   - CameraParent
+  - AudioManager
   layers:
   - Default
   - TransparentFX

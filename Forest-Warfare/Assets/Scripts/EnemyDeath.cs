@@ -5,12 +5,12 @@ using UnityEngine.Audio;
 
 public class EnemyDeath : MonoBehaviour
 {
-    public void Death(AudioSource audio, GameObject particles)
+    public void Death(GameObject particles)
     {
         GetComponent<SpriteRenderer>().enabled = false;
-        audio.Play();
+        AudioManager.Play("EnemyDeath");
         transform.Find("Canvas").gameObject.SetActive(false);
         Instantiate(particles, transform.position, Quaternion.identity);
-        Destroy(gameObject, audio.clip.length);
+        Destroy(gameObject, GetComponent<AudioSource>().clip.length);
     }
 }

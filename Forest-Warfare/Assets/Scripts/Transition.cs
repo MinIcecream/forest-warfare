@@ -63,6 +63,7 @@ public class Transition : MonoBehaviour
     }
     IEnumerator Load()
     {
+        AudioManager.Stop("Music");
         yield return new WaitForSecondsRealtime(1f);
         SceneManager.LoadScene(levelToLoad); 
     }

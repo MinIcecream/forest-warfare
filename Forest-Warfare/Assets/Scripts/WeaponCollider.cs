@@ -9,6 +9,7 @@ public class WeaponCollider : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
+            AudioManager.Play("MeleeHit");
             coll.gameObject.GetComponent<EnemyHealth>().DealDamage(damage);
 
         }

@@ -26,6 +26,7 @@ public class Crate : MonoBehaviour
     {
         if (trigger.trigger)
         {
+            AudioManager.Play("Crate");
             SpawnWeapon();
             DestroyCrate();
         }

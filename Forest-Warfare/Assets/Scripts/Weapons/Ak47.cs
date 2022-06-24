@@ -18,12 +18,14 @@ public class Ak47 : MonoBehaviour
         {
             if (!shooting)
             {
+                AudioManager.Play("Ak47");
                 shooting = true;
                 StartCoroutine(shoot());
             }
         }
         else
         {
+            AudioManager.Stop("Ak47");
             shooting = false;
         }
     }
@@ -41,5 +43,12 @@ public class Ak47 : MonoBehaviour
             newBullet.GetComponent<BulletProjectile>().dir = (mousePos - objPos).normalized;
             yield return new WaitForSeconds(0.15f);
         }
+    }
+    void OnDisable()
+    {
+        if (GameObject.FindWithTag("AudioManager"))
+        {
+            AudioManager.Stop("Ak47");
+        } 
     }
 }

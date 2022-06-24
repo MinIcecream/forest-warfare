@@ -26,6 +26,7 @@ public class EncounterManager : MonoBehaviour
     public wave[] waves;
 
     public Image fightIcon;
+    public Image contArrow;
 
     List<GameObject> currentWaveEnemies=new List<GameObject>();
     void OnTriggerEnter2D(Collider2D other)
@@ -40,8 +41,8 @@ public class EncounterManager : MonoBehaviour
     {
         encounterStarted = true;
 
-        leftBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(leftBarrierPos, 0), Quaternion.identity);
-        rightBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(rightBarrierPos, 0), Quaternion.identity);
+        leftBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(transform.position.x+leftBarrierPos, 0), Quaternion.identity);
+        rightBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(transform.position.x+rightBarrierPos, 0), Quaternion.identity);
         leftBarrier.SetActive(true); 
         rightBarrier.SetActive(true);
         StartCoroutine(SpawnWaves());
@@ -50,11 +51,19 @@ public class EncounterManager : MonoBehaviour
         StartCoroutine(FightIconFadeOut());
     }
 
-    void EndEncounter()
-    {
-        leftBarrier.SetActive(false);
+    public void EndEncounter()
+    { 
         rightBarrier.SetActive(false);
+        contArrow.gameObject.SetActive(false);
         this.gameObject.SetActive(false);
+    }
+
+    void StartEndEncounter()
+    {
+        rightBarrier.GetComponent<EncounterBarrier>().SetEndEncounterBarrier(this);
+
+        leftBarrier.SetActive(false);
+        contArrow.gameObject.SetActive(true); 
     }
 
     public IEnumerator SpawnWaves()
@@ -86,7 +95,7 @@ public class EncounterManager : MonoBehaviour
             }
         }
 
-        EndEncounter();
+        StartEndEncounter();
     }
     void SpawnWave(int waveNum)
     { 
@@ -102,7 +111,6 @@ public class EncounterManager : MonoBehaviour
             GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemies/" + e.name), e.pos, Quaternion.identity);
             currentWaveEnemies.Add(newEnemy);
         }
-         
     }
 
     public IEnumerator FightIconFadeOut()

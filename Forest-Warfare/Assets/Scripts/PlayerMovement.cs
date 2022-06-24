@@ -137,9 +137,14 @@ public class PlayerMovement : MonoBehaviour
         while (counter > 0)
         {
             yield return new WaitForSeconds(0.1f);
-            counter--;
+            counter-=0.1f;
+            if (counter < 0.2f)
+            {
+                rb.gravityScale = 4f;
+            }
         }
-        rb.gravityScale = 4f;
+        anim.SetBool("roll", false); 
+        GetComponent<PlayerHealth>().SetInvulnerable(false);
     }
 
     void Dash()
@@ -149,10 +154,13 @@ public class PlayerMovement : MonoBehaviour
         {
             return;
         }
+        GetComponent<PlayerHealth>().SetInvulnerable(true);
+        anim.SetBool("roll",true);
         stam.UseStamina(staminaCost);
         StartCoroutine(Countdown(dashTime));
         rb.velocity = Vector3.zero;
         rb.gravityScale = 0f;
+
         if (previousKey == "a")
         {
             rb.AddForce(-dashForce, ForceMode2D.Impulse);
@@ -182,6 +190,7 @@ public class PlayerMovement : MonoBehaviour
             {
                 runAndJumpDust.GetComponent<ParticleSystem>().Play();
             }
+
             grounded = false;
             anim.SetBool("grounded", false);
             anim.SetTrigger("jump");

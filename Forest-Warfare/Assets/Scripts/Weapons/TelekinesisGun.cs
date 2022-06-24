@@ -13,7 +13,7 @@ public class TelekinesisGun : MonoBehaviour
     bool objChosen = false;
 
     public WeaponCharge chargeScript;
-
+    bool firing;
     void Update()
     {
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -58,10 +58,22 @@ public class TelekinesisGun : MonoBehaviour
 
         if (dragging && hitObject != null && chargeScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
-            if(hitObject.GetComponent<MouseDrag>() != null && hitObject.GetComponent<Outline>()!=null)
-            hitObject.GetComponent<MouseDrag>().drag = true;
-            hitObject.GetComponent<Outline>().OutlineObject();
-             
+            if (!firing)
+            {
+                firing = true;
+                AudioManager.Play("TelekinesisGun");
+            } 
+            if (hitObject.GetComponent<MouseDrag>() != null && hitObject.GetComponent<Outline>() != null)
+            {
+
+                hitObject.GetComponent<MouseDrag>().drag = true;
+                hitObject.GetComponent<Outline>().OutlineObject();
+            }
+        }
+        else
+        {
+            AudioManager.Stop("TelekinesisGun");
+            firing = false;
         }
     }
 }

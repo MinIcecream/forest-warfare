@@ -10,6 +10,7 @@ public class Flamethrower : MonoBehaviour
     private List<Collider2D> colliders = new List<Collider2D>();
 
     public WeaponCharge chargeScript;
+    bool firing;
 
     private void OnTriggerEnter2D(Collider2D other)
     {
@@ -28,11 +29,20 @@ public class Flamethrower : MonoBehaviour
     {
         if (Input.GetMouseButton(0) && chargeScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
-            ParticleSystem.EmissionModule em = flames.emission;
-            em.enabled = true;
+            if (!firing)
+            {
+                AudioManager.Play("Flamethrower");
+                GetComponent<BoxCollider2D>().enabled = true;
+                ParticleSystem.EmissionModule em = flames.emission;
+                em.enabled = true;
+                firing = true;
+            } 
         }
         else
         {
+            firing = false;
+            AudioManager.Stop("Flamethrower");
+            GetComponent<BoxCollider2D>().enabled = false;
             ParticleSystem.EmissionModule em = flames.emission;
             em.enabled = false;
         }
@@ -65,6 +75,13 @@ public class Flamethrower : MonoBehaviour
                     colliders[i].GetComponent<TerrainTrigger>().trigger = true;
                 }
             }
+        }
+    }
+    void OnDisable()
+    {
+        if (GameObject.FindWithTag("AudioManager"))
+        {
+            AudioManager.Stop("Flamethrower");
         }
     }
 }
