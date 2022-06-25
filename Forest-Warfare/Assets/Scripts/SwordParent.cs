@@ -42,4 +42,9 @@ public class SwordParent : MonoBehaviour
             spin = false;
         }
     }
+    void OnEnable()
+    {
+        GameObject.FindGameObjectWithTag("ChargeUI").GetComponent<ChargeCounterUI>().HideUI();
+        GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<AmmoCounterUI>().HideUI();
+    }
 }

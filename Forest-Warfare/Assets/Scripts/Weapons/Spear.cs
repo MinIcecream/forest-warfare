@@ -47,4 +47,9 @@ public class Spear : MonoBehaviour
             newSpear.GetComponent<SpearProjectile>().Propel((finalPos-initialPos));
         }
     }
+    void OnEnable()
+    {
+        GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<AmmoCounterUI>().HideUI();
+        GameObject.FindGameObjectWithTag("ChargeUI").GetComponent<ChargeCounterUI>().HideUI();
+    }
 }
