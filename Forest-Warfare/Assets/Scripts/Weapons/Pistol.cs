@@ -9,10 +9,14 @@ public class Pistol : MonoBehaviour
     public WeaponAmmo ammoScript;
     public Transform spawnPt;
     public GameObject parent;
+    bool canShoot = true;
+    public float fireDelay;
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
+        if (Input.GetMouseButtonDown(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false && canShoot)
         {
+            canShoot = false;
+            StartCoroutine(Delay());
             AudioManager.Play("Pistol");
             ammoScript.Shoot();
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
@@ -22,5 +26,10 @@ public class Pistol : MonoBehaviour
             newBullet.GetComponent<BulletProjectile>().dir = (mousePos - objPos).normalized;
 
         }
+    }
+    IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(fireDelay);
+        canShoot = true;
     }
 }
