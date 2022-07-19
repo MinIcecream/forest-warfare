@@ -23,6 +23,7 @@ TagManager:
   - PauseManager
   - CameraParent
   - AudioManager
+  - WeaponList
   layers:
   - Default
   - TransparentFX

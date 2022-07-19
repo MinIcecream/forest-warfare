@@ -16,6 +16,11 @@ public class Crate : MonoBehaviour
 
     private Weapon weaponToSpawn;
 
+    void Awake()
+    {
+        weaponList=GameObject.FindWithTag("WeaponList").GetComponent<WeaponList>();
+    }
+
     public enum rarity
     {
         common,

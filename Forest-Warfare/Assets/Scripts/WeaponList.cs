@@ -27,8 +27,12 @@ public class WeaponList : MonoBehaviour
     public static Weapon flamethrower = new Weapon("flamethrower", "common");
 
     public static Weapon shotgun = new Weapon("shotgun", "common");
+
     public static Weapon ak47 = new Weapon("ak47", "common");
+
     public static Weapon sniper = new Weapon("sniper", "common");
+
+    
     public static Weapon minigun = new Weapon("minigun", "common");
 
     void Awake()

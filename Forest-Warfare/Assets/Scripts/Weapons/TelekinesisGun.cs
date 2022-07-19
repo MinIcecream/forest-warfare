@@ -7,7 +7,8 @@ public class TelekinesisGun : MonoBehaviour
     int bitmask = 1 << 12 | 1<<9 | 1 << 13;
 
     bool dragging = false;
-
+    public Material outlineMat;
+    public Material normal;
     GameObject hitObject;
 
     bool objChosen = false;
@@ -29,7 +30,9 @@ public class TelekinesisGun : MonoBehaviour
             }
             if (hitObject)
             {
-                hitObject.GetComponent<Outline>().OutlineObject();  
+
+                hitObject.GetComponent<SpriteRenderer>().material=outlineMat;
+                //hitObject.GetComponent<Outline>().OutlineObject();  
             }
 
             objChosen = true;
@@ -42,8 +45,9 @@ public class TelekinesisGun : MonoBehaviour
         else
         {
             chargeScript.customCondition = false;
-            if (dragging == false)
+            if (dragging == false&&objChosen)
             {
+                hitObject.GetComponent<SpriteRenderer>().material=normal;
                 objChosen = false;
             }
         }
@@ -67,7 +71,9 @@ public class TelekinesisGun : MonoBehaviour
             {
 
                 hitObject.GetComponent<MouseDrag>().drag = true;
-                hitObject.GetComponent<Outline>().OutlineObject();
+                //hitObject.GetComponent<Outline>().OutlineObject();
+
+                hitObject.GetComponent<SpriteRenderer>().material=outlineMat;
             }
         }
         else

@@ -22,6 +22,7 @@ public class EnemyHealth : MonoBehaviour
     }
     public void DealDamage(int damage)
     {
+        GetComponent<DamageShader>().Damage();
         health -= damage;
         healthBar.SetHealth(health);
     }

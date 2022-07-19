@@ -122,6 +122,7 @@ GameObject:
   - component: {fileID: 8611309461665256581}
   - component: {fileID: 8611309461665256580}
   - component: {fileID: 8611309461665256634}
+  - component: {fileID: 930275899816771234}
   m_Layer: 9
   m_Name: Bird
   m_TagString: Enemy
@@ -465,6 +466,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   visibleTargets: []
+--- !u!114 &930275899816771234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8611309461665256584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b047c3e28713d4a5cac6a897a350530a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  damage: {fileID: 2100000, guid: aa78071378f6f4152812497ac071120a, type: 2}
 --- !u!1 &8611309461723915637
 GameObject:
   m_ObjectHideFlags: 0

@@ -289,6 +289,7 @@ GameObject:
   - component: {fileID: 4177536685404662559}
   - component: {fileID: 4177536685404662556}
   - component: {fileID: 4177536685404662544}
+  - component: {fileID: 8555892926279164562}
   m_Layer: 9
   m_Name: Frog
   m_TagString: Enemy
@@ -615,11 +616,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3b76fd9eaa34547908d0d829c1cf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  frogMode: 1
   isAttacking: 0
   deathSound: {fileID: 4177536685404662555}
   deathParticles: {fileID: 8469391669340717468, guid: 62f5aeb79fde1e149b9889104d01bc66, type: 3}
   explosion: {fileID: 4177536685404662544}
   FOV: {fileID: 4177536685404662559}
+  canJump: 1
   grounded: 1
   checkRadius: 1
   whatIsGround:
@@ -640,6 +643,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   explosion: {fileID: 5411367744568228365, guid: 513d70de2ad99e341ad74dd1b6ea46d0, type: 3}
   range: {fileID: 4177536684389018565}
+--- !u!114 &8555892926279164562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177536685404662626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b047c3e28713d4a5cac6a897a350530a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  damage: {fileID: 2100000, guid: aa78071378f6f4152812497ac071120a, type: 2}
 --- !u!1 &4177536685645296219
 GameObject:
   m_ObjectHideFlags: 0

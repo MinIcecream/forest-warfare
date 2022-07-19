@@ -18,8 +18,9 @@ public class PlayerHealth : MonoBehaviour
     }
     public void DealDamage(int damage)
     {
-        if(!invulnerable){
-
+        if(!invulnerable)
+        {
+            GetComponent<DamageShader>().Damage();
             health -= damage;
         } 
     }

@@ -16,7 +16,7 @@ public class Outline : MonoBehaviour
     }
 
     void Update()
-    {
+    {/*
         if (shouldHighlight)
         {
             GetComponent<SpriteRenderer>().material = outline;
@@ -25,6 +25,6 @@ public class Outline : MonoBehaviour
         {
             GetComponent<SpriteRenderer>().material = normal;
         }
-        shouldHighlight = false;
+        shouldHighlight = false;*/
     }
 }

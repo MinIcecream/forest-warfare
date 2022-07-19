@@ -1,0 +1,151 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6433308072922859395
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6433308072922859517}
+  - component: {fileID: 6433308072922859516}
+  m_Layer: 0
+  m_Name: AudioManager
+  m_TagString: AudioManager
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6433308072922859517
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6433308072922859395}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8.295175, y: 7.1290607, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6433308072922859516
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6433308072922859395}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37e104db8a4978d41ba392360fa87e42, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Music
+    clip: {fileID: 8300000, guid: 927c95eff0cfc3841a476c137b725986, type: 3}
+    isMusic: 1
+    isLoop: 1
+    volume: 0.22
+    pitch: 1
+    source: {fileID: 0}
+  - name: EnemyDeath
+    clip: {fileID: 8300000, guid: 9ec51b58d0b3d8a44985926aef223c9b, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Explosion
+    clip: {fileID: 8300000, guid: 8be5b66777c0efb46a258f7371df1233, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.31
+    pitch: 2.83
+    source: {fileID: 0}
+  - name: Ak47
+    clip: {fileID: 8300000, guid: 4c12c482054888247be09156ea02f2b1, type: 3}
+    isMusic: 0
+    isLoop: 1
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Minigun
+    clip: {fileID: 8300000, guid: 82251f2b76e513f45bdc0d5c501b7180, type: 3}
+    isMusic: 0
+    isLoop: 1
+    volume: 0.65
+    pitch: 1
+    source: {fileID: 0}
+  - name: Pistol
+    clip: {fileID: 8300000, guid: ac0c8ce2089927241b2091c9dad17a69, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.65
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlasmaPistol
+    clip: {fileID: 8300000, guid: 0ba4467c6d1ab644cabe0ce418a6e09d, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.65
+    pitch: 1
+    source: {fileID: 0}
+  - name: Shotgun
+    clip: {fileID: 8300000, guid: d4b3d95859449954aac5afbfb0b4fdeb, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.65
+    pitch: 1
+    source: {fileID: 0}
+  - name: Sniper
+    clip: {fileID: 8300000, guid: 80cbc935711f3d840989cccbbc07cfb0, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.65
+    pitch: 1
+    source: {fileID: 0}
+  - name: RocketLauncher
+    clip: {fileID: 8300000, guid: ffde3759f44a67d4fa92bc76c64772ba, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.65
+    pitch: 1
+    source: {fileID: 0}
+  - name: Flamethrower
+    clip: {fileID: 8300000, guid: f60e2fee835083744893623f26619cbe, type: 3}
+    isMusic: 0
+    isLoop: 1
+    volume: 0.322
+    pitch: 1
+    source: {fileID: 0}
+  - name: TelekinesisGun
+    clip: {fileID: 8300000, guid: 122bd003f2fa7b34ba79e8936c9a484f, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: MeleeHit
+    clip: {fileID: 8300000, guid: 418b467da474a18438d8c3ef6a232acf, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 0.39
+    pitch: 1
+    source: {fileID: 0}
+  - name: Rock
+    clip: {fileID: 8300000, guid: 606654438ef0a7143869a95d8087b671, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: Crate
+    clip: {fileID: 8300000, guid: 77853124eb25dc64481f5a8922de4a1e, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}

@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2909126098804172164
 Transform:
   m_ObjectHideFlags: 0
@@ -47,7 +47,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25511813, y: -0.22846198}
+  m_Offset: {x: -0.20044935, y: -0.22846198}
   m_SpriteTilingProperty:
     border: {x: 0.049999997, y: 0.049999997, z: 0.049999997, w: 0.049999997}
     pivot: {x: 0.5, y: 0.5}
@@ -58,7 +58,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.337582, y: 0.2544799}
+  m_Size: {x: 4.87319, y: 0.2544799}
   m_EdgeRadius: 0
 --- !u!114 &2909126098804172167
 MonoBehaviour:
@@ -4925,6 +4925,7 @@ GameObject:
   - component: {fileID: 2909126098852306213}
   - component: {fileID: 2909126098852306212}
   - component: {fileID: 2909126098852306214}
+  - component: {fileID: 9098537921887505487}
   m_Layer: 9
   m_Name: Monkey
   m_TagString: Enemy
@@ -5266,6 +5267,20 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 16384
   visibleTargets: []
+--- !u!114 &9098537921887505487
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2909126098852306217}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b047c3e28713d4a5cac6a897a350530a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  damage: {fileID: 2100000, guid: aa78071378f6f4152812497ac071120a, type: 2}
 --- !u!1 &2909126099359347022
 GameObject:
   m_ObjectHideFlags: 0
