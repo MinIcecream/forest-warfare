@@ -48,6 +48,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -328,6 +329,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      levelSelectDots_6: -5031295873779410123
+      levelSelectDots_7: 8586585941103133695
+      levelSelectDots_4: -4502185099805377586
+      levelSelectDots_2: 2425714466704389966
+      levelSelectDots_0: 6613332147269403658
+      levelSelectDots_3: 8326792104274318687
+      levelSelectDots_5: 3373429779549259405
+      levelSelectDots_1: 4357071444429060462
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

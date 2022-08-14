@@ -6,7 +6,7 @@ public class Flamethrower : MonoBehaviour
 {
     public ParticleSystem flames;
     public float tickTime = 0f;
-
+    public int damage = 20;
     private List<Collider2D> colliders = new List<Collider2D>();
 
     public WeaponCharge chargeScript;
@@ -68,7 +68,7 @@ public class Flamethrower : MonoBehaviour
             {
                 if(colliders[i].gameObject.tag == "Enemy")
                 {
-                    colliders[i].GetComponent<EnemyHealth>().DealDamage(20);
+                    colliders[i].GetComponent<EnemyHealth>().DealDamage(damage);
                 }
                 else if (colliders[i].gameObject.tag == "Interactable Terrain")
                 {

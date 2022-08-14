@@ -28,6 +28,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6319023503520978640}
   m_RootOrder: 0
@@ -103,6 +104,7 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6319023503246153698}
   - {fileID: 6319023503932273611}
@@ -197,7 +199,6 @@ GameObject:
   - component: {fileID: 6319023503847571856}
   - component: {fileID: 6319023503847571823}
   - component: {fileID: 6319023503847571822}
-  - component: {fileID: 6319023503847571820}
   - component: {fileID: 6319023503847571821}
   - component: {fileID: 6319023503847571819}
   - component: {fileID: 5560960408139780646}
@@ -218,6 +219,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.16, y: -11.54, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6319023504830566515}
   - {fileID: 6319023503896528029}
@@ -278,7 +280,7 @@ SpriteRenderer:
   m_SpriteSortPoint: 0
 --- !u!95 &6319023503847571864
 Animator:
-  serializedVersion: 3
+  serializedVersion: 4
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -291,6 +293,7 @@ Animator:
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
@@ -504,20 +507,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2a2d921552709e41a01d4382c54acc8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &6319023503847571820
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6319023503847571865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8da9ebefd43f84eb0400680abddbbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  outline: {fileID: 2100000, guid: f6665daca9833b9469a8bc228fb4a800, type: 2}
 --- !u!114 &6319023503847571821
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -562,7 +551,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6319023503847571865}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b047c3e28713d4a5cac6a897a350530a, type: 3}
   m_Name: 
@@ -598,6 +587,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 6319023503520978640}
   m_Father: {fileID: 6319023503847571862}
@@ -697,6 +687,7 @@ RectTransform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6319023503520978640}
   m_RootOrder: 1
@@ -772,6 +763,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -0.51, y: 0.22, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 6319023503847571862}
   m_RootOrder: 0

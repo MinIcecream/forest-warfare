@@ -24,6 +24,7 @@ TagManager:
   - CameraParent
   - AudioManager
   - WeaponList
+  - BookCanvas
   layers:
   - Default
   - TransparentFX

@@ -30,8 +30,7 @@ public class TelekinesisGun : MonoBehaviour
             }
             if (hitObject)
             {
-
-                hitObject.GetComponent<SpriteRenderer>().material=outlineMat;
+                hitObject.GetComponent<SpriteRenderer>().material=outlineMat; 
                 //hitObject.GetComponent<Outline>().OutlineObject();  
             }
 
@@ -45,7 +44,7 @@ public class TelekinesisGun : MonoBehaviour
         else
         {
             chargeScript.customCondition = false;
-            if (dragging == false&&objChosen)
+            if (dragging == false && objChosen)
             {
                 hitObject.GetComponent<SpriteRenderer>().material=normal;
                 objChosen = false;
@@ -56,7 +55,6 @@ public class TelekinesisGun : MonoBehaviour
             dragging = false;
             objChosen = false;
             hitObject = null;
-
         }
 
 
@@ -67,12 +65,11 @@ public class TelekinesisGun : MonoBehaviour
                 firing = true;
                 AudioManager.Play("TelekinesisGun");
             } 
-            if (hitObject.GetComponent<MouseDrag>() != null && hitObject.GetComponent<Outline>() != null)
+            if (hitObject.GetComponent<MouseDrag>() != null)
             {
 
                 hitObject.GetComponent<MouseDrag>().drag = true;
                 //hitObject.GetComponent<Outline>().OutlineObject();
-
                 hitObject.GetComponent<SpriteRenderer>().material=outlineMat;
             }
         }

@@ -13,7 +13,7 @@ public class SpearProjectile : MonoBehaviour
 
     public void Propel(Vector2 dir)
     {
-        rb.AddForce(dir *100, ForceMode2D.Impulse);
+        rb.AddForce(dir *80, ForceMode2D.Impulse);
     }
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)

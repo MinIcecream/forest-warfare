@@ -8,28 +8,15 @@ public class DamageShader : MonoBehaviour
 
     public Material damage;
 
-    bool shouldDamage = false;
-
     public void Damage()
     {
-        shouldDamage = true;
+        GetComponent<SpriteRenderer>().material = damage;
         StartCoroutine(damageCountdown());
     }
 
-    void Update()
-    {
-        if (shouldDamage)
-        {
-            GetComponent<SpriteRenderer>().material = damage;
-        }
-        else
-        {
-            GetComponent<SpriteRenderer>().material = normal;
-        }
-    }
 
     IEnumerator damageCountdown(){
         yield return new WaitForSeconds(0.2f);
-        shouldDamage=false;
+        GetComponent<SpriteRenderer>().material = normal;
     }
 }

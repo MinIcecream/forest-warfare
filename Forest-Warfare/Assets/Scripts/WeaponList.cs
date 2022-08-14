@@ -6,34 +6,34 @@ public class WeaponList : MonoBehaviour
 {
     public List<Weapon> weaponList = new List<Weapon>();
 
-    public static Weapon pistol = new Weapon("pistol", "common");
+    public static Weapon pistol = new Weapon("pistol", "common","Pistol","description here");
 
 
-    public static Weapon spear = new Weapon("spear", "common");
+    public static Weapon spear = new Weapon("spear", "common","Spear", "description here");
 
 
-    public static Weapon telekinesisGun = new Weapon("telekinesisGun", "common");
+    public static Weapon telekinesisGun = new Weapon("telekinesisGun", "common","Telekinesis Gun", "description here");
 
 
-    public static Weapon grenadeLauncher = new Weapon("grenadeLauncher", "common");
+    public static Weapon grenadeLauncher = new Weapon("grenadeLauncher", "common","Grenade Launcher", "description here");
 
 
-    public static Weapon rocketLauncher = new Weapon("rocketLauncher", "common");
+    public static Weapon rocketLauncher = new Weapon("rocketLauncher", "common","Rocket Launcher", "description here");
 
 
-    public static Weapon sword = new Weapon("sword", "common");
+    public static Weapon sword = new Weapon("sword", "common","Sword", "description here");
 
 
-    public static Weapon flamethrower = new Weapon("flamethrower", "common");
+    public static Weapon flamethrower = new Weapon("flamethrower", "common","Flamethrower", "description here");
 
-    public static Weapon shotgun = new Weapon("shotgun", "common");
+    public static Weapon shotgun = new Weapon("shotgun", "common","Shotgun", "description here");
 
-    public static Weapon ak47 = new Weapon("ak47", "common");
+    public static Weapon ak47 = new Weapon("ak47", "common","Ak-47", "description here");
 
-    public static Weapon sniper = new Weapon("sniper", "common");
+    public static Weapon sniper = new Weapon("sniper", "common","Sniper", "description here");
 
     
-    public static Weapon minigun = new Weapon("minigun", "common");
+    public static Weapon minigun = new Weapon("minigun", "common","Minigun", "description here");
 
     void Awake()
     {

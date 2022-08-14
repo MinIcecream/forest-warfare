@@ -57,6 +57,7 @@ TextureImporter:
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
+  ignoreMasterTextureLimit: 0
   grayScaleToAlpha: 0
   generateCubemap: 6
   cubemapConvolution: 0
@@ -376,6 +377,18 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
+    nameFileIdTable:
+      Grass clone clone-1.png (1)_4: 5154478850370256900
+      Grass clone clone-1.png (1)_1: 592050610268587121
+      Grass clone clone-1.png (1)_5: 556978240547224484
+      Grass clone clone-1.png (1)_10: 2069813251508310794
+      Grass clone clone-1.png (1)_9: -6019287146253079294
+      Grass clone clone-1.png (1)_3: 1740680245145397572
+      Grass clone clone-1.png (1)_7: 5208430738134720769
+      Grass clone clone-1.png (1)_6: 3329564472258521005
+      Grass clone clone-1.png (1)_0: 2647101229926935072
+      Grass clone clone-1.png (1)_2: 4730921590954495510
+      Grass clone clone-1.png (1)_8: 3071186493659304460
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
