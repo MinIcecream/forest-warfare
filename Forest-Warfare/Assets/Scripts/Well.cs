@@ -15,7 +15,8 @@ public class Well : MonoBehaviour
     {
         if (popup.activeInHierarchy == true && Input.GetKeyDown("e"))
         {
-            book.transform.GetChild(0).gameObject.SetActive(true);
+            book.transform.GetChild(1).gameObject.SetActive(true);
+            book.transform.GetChild(1).GetChild(0).GetComponent<WellSelectWeapon>().well = transform.position;
         }
     }
 

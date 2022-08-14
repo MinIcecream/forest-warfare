@@ -149,8 +149,8 @@ TextureImporter:
       name: Pause Sprite_0
       rect:
         serializedVersion: 2
-        x: 8
-        y: 43
+        x: 0
+        y: 53
         width: 11
         height: 11
       alignment: 0
@@ -170,8 +170,8 @@ TextureImporter:
       name: Pause Sprite_1
       rect:
         serializedVersion: 2
-        x: 21
-        y: 43
+        x: 11
+        y: 53
         width: 11
         height: 11
       alignment: 0
@@ -181,7 +181,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2b933acf9c22c6ec0800000000000000
+      spriteID: a594dc103ed1c6f49961d6b3111708c7
       internalID: -3572442153489319502
       vertices: []
       indices: 
@@ -191,8 +191,8 @@ TextureImporter:
       name: Pause Sprite_2
       rect:
         serializedVersion: 2
-        x: 36
-        y: 43
+        x: 22
+        y: 53
         width: 11
         height: 11
       alignment: 0
@@ -202,7 +202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 97b37a9f73d8af1a0800000000000000
+      spriteID: 04f4fd61f9b386948b98f7d85602b4be
       internalID: -6774947417874285703
       vertices: []
       indices: 
@@ -212,8 +212,8 @@ TextureImporter:
       name: Pause Sprite_3
       rect:
         serializedVersion: 2
-        x: 49
-        y: 43
+        x: 33
+        y: 53
         width: 11
         height: 11
       alignment: 0
@@ -223,7 +223,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 228d69ba9187cf120800000000000000
+      spriteID: 7f58d76032457c64b89d3a5ea6f33efc
       internalID: 2448964349031012386
       vertices: []
       indices: 
@@ -233,8 +233,8 @@ TextureImporter:
       name: Pause Sprite_4
       rect:
         serializedVersion: 2
-        x: 7
-        y: 26
+        x: 44
+        y: 53
         width: 11
         height: 11
       alignment: 0
@@ -244,7 +244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 341cff03b46371740800000000000000
+      spriteID: a0ac5759c154e2742abbb308bc429dab
       internalID: 5122622797729743171
       vertices: []
       indices: 
@@ -254,8 +254,8 @@ TextureImporter:
       name: Pause Sprite_5
       rect:
         serializedVersion: 2
-        x: 20
-        y: 26
+        x: 0
+        y: 42
         width: 11
         height: 11
       alignment: 0
@@ -265,8 +265,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: df7f03fdeb7bb7c30800000000000000
+      spriteID: e5a640914ebbaa7478978779740e63e0
       internalID: 4358279094827284477
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Pause Sprite_6
+      rect:
+        serializedVersion: 2
+        x: 11
+        y: 42
+        width: 11
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afa11e9197675594bbef9bfc97ff6197
+      internalID: -1069953168
       vertices: []
       indices: 
       edges: []
@@ -287,6 +308,7 @@ TextureImporter:
       Pause Sprite_3: 2448964349031012386
       Pause Sprite_1: -3572442153489319502
       Pause Sprite_4: 5122622797729743171
+      Pause Sprite_6: -1069953168
       Pause Sprite_5: 4358279094827284477
   spritePackingTag: 
   pSDRemoveMatte: 0

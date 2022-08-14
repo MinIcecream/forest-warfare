@@ -7,8 +7,7 @@ public class Crate : MonoBehaviour
     public GameObject destroyedCrate;
     public TerrainTrigger trigger;
     public string weaponType;
-    public rarity weaponRarity;
-    public GameObject interactableWeapon;
+    public rarity weaponRarity; 
 
     public WeaponList weaponList;
 
@@ -40,8 +39,7 @@ public class Crate : MonoBehaviour
     void DestroyCrate()
     {
         Instantiate(destroyedCrate, transform.position, Quaternion.identity);
-        var spawnedWeapon = Instantiate(interactableWeapon, transform.position, Quaternion.identity);
-        spawnedWeapon.GetComponent<InteractableWeapon>().SetSprite(weaponToSpawn.name);
+        GetComponent<InstantiateInteractableWeapon>().Spawn(weaponToSpawn.name, transform.position); 
         Destroy(gameObject);
     }
 

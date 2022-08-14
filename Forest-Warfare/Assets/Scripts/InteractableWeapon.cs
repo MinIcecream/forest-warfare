@@ -17,9 +17,12 @@ public class InteractableWeapon : MonoBehaviour
     public string weapon;
     public SpriteRenderer spriteRenderer;
 
+    GameObject player;
 
     void Start()
     {
+        player = GameObject.FindWithTag("Player");
+
         spriteRenderer.sprite = Resources.Load<Sprite>("Weapons/" + weapon);
         initialPos = transform.position;
         distance = new Vector3(initialPos.x, initialPos.y + 1.3f, initialPos.z);
@@ -36,15 +39,22 @@ public class InteractableWeapon : MonoBehaviour
                 SetSprite("");
             }
             else
-            {
-
+            { 
                 string currentWeapon = weapon;
                 SetSprite(inventoryManager.inventoryWeapons[inventoryManager.activeSlot - 1]);
                 inventoryManager.SwapItem(currentWeapon);
             } 
-             
         }
-    }
+
+        if (Vector2.Distance(player.transform.position, transform.position) < 3)
+        { 
+            popup.SetActive(true);
+        }
+        else
+        { 
+            popup.SetActive(false);
+        }
+    }/*
     void FixedUpdate()
     {
         if (goingUp)
@@ -64,22 +74,7 @@ public class InteractableWeapon : MonoBehaviour
         {
             goingUp = false;
         }
-    }
-
-    void OnTriggerStay2D(Collider2D coll)
-    {
-        if(coll.gameObject.tag == "Player")
-        {
-            popup.SetActive(true);
-        }
-    }
-    void OnTriggerExit2D(Collider2D coll)
-    {
-        if(coll.gameObject.tag == "Player")
-        {
-            popup.SetActive(false);
-        }
-    }
+    }*/
 
     public void SetSprite(string newWeapon)
     {

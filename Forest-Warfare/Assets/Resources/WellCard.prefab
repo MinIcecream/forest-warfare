@@ -148,7 +148,7 @@ GameObject:
   - component: {fileID: 2649069701602864156}
   - component: {fileID: 8085914798181369190}
   m_Layer: 5
-  m_Name: Card
+  m_Name: WellCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -173,8 +173,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -46.700195, y: 7.8289948}
-  m_SizeDelta: {x: 104.75, y: 76.5823}
+  m_AnchoredPosition: {x: -46.700195, y: -3.7003784}
+  m_SizeDelta: {x: 104.75, y: 99.641}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5032293958901717754
 CanvasRenderer:
@@ -200,7 +200,7 @@ MonoBehaviour:
   frontImage: {fileID: 4416658448811648591}
   frontText: {fileID: 6142556715159941200}
   backText: {fileID: 0}
-  front: {fileID: 8479838891013854066}
+  front: {fileID: 0}
   back: {fileID: 0}
 --- !u!114 &8085914798181369190
 MonoBehaviour:
@@ -470,7 +470,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 1}
   m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -0.000011444092, y: -41.788}
+  m_AnchoredPosition: {x: -0.000011444092, y: -42.363}
   m_SizeDelta: {x: 94.7433, y: 47.795}
   m_Pivot: {x: 0.49999988, y: 0.9999994}
 --- !u!222 &3871446547648049987
@@ -544,10 +544,10 @@ RectTransform:
   m_Father: {fileID: 9041193120429688137}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0}
-  m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 38.1, y: 17.5}
-  m_SizeDelta: {x: 254.8839, y: 25.2106}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 0}
+  m_AnchoredPosition: {x: 0, y: 17.4}
+  m_SizeDelta: {x: 0, y: 25.210602}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!222 &5628757151138394903
 CanvasRenderer:
@@ -642,7 +642,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -77.90755, y: -0.27027035, z: 0, w: 0.035505295}
+  m_margin: {x: -0.20985031, y: -0.27027035, z: 0, w: 0.035505295}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -773,7 +773,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2649069701602864156}
         m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: FlipToBack
+        m_MethodName: SelectWeapon
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

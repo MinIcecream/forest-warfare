@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 3443718705974376645}
   - component: {fileID: 3443718705974376644}
   - component: {fileID: 3443718705974376762}
+  - component: {fileID: -9152857038855962030}
   m_Layer: 12
   m_Name: Crate
   m_TagString: Interactable Terrain
@@ -118,7 +119,6 @@ MonoBehaviour:
   trigger: {fileID: 3443718705974376647}
   weaponType: random
   weaponRarity: 0
-  interactableWeapon: {fileID: 4559651744037725755, guid: ab1961f1e3aa4ed4ca081a9621f51c58, type: 3}
   weaponList: {fileID: 0}
 --- !u!50 &3443718705974376645
 Rigidbody2D:
@@ -182,3 +182,16 @@ MonoBehaviour:
   drag: 0
   cam: {fileID: 0}
   rb: {fileID: 3443718705974376645}
+--- !u!114 &-9152857038855962030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3443718705974376643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d335afba668f7546b00fcac1755801c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactableWeapon: {fileID: 4559651744037725755, guid: ab1961f1e3aa4ed4ca081a9621f51c58, type: 3}

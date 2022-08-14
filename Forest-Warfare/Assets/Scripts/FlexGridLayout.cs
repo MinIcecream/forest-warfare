@@ -14,28 +14,20 @@ public class FlexGridLayout : LayoutGroup
 
     public int rows;
     public int columns;
-
+    public float parentHeight;
     public Vector2 cellSize;
     public Vector2 spacing;
 
     public override void CalculateLayoutInputHorizontal()
     {
         base.CalculateLayoutInputHorizontal();
-
+        /*
         float sqrRt = Mathf.Sqrt(transform.childCount);
         rows = Mathf.CeilToInt(sqrRt);
-        columns = Mathf.CeilToInt(sqrRt);
-
-        if (fitType == FitType.Width)
-        {
-            rows = Mathf.CeilToInt(transform.childCount / (float)columns);
-        }
-        if (fitType == FitType.Height)
-        {
-            columns = Mathf.CeilToInt(transform.childCount / (float)rows);
-        }
+        columns = Mathf.CeilToInt(sqrRt);*/
+        rows = Mathf.CeilToInt((float)rectChildren.Count/columns);
         float parentWidth = rectTransform.rect.width;
-        float parentHeight = rectTransform.rect.height;
+        parentHeight = rectTransform.rect.height;
 
         float cellWidth = (parentWidth / (float)columns) - ((spacing.x / (float)columns) * 2) - (padding.left / (float)columns) - (padding.right / (float)columns);
         float cellHeight = (parentHeight / (float)rows) - ((spacing.y / (float)rows) * 2) - (padding.top / (float)rows) - (padding.bottom / (float)rows);

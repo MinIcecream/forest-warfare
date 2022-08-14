@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4559651743873223109}
   - component: {fileID: 4559651743873223108}
   - component: {fileID: 4559651743873223111}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: Weapon Popup Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -58,8 +58,8 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_AdditionalShaderChannelsFlag: 25
-  m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingLayerID: 1394921855
+  m_SortingOrder: 34
   m_TargetDisplay: 0
 --- !u!114 &4559651743873223108
 MonoBehaviour:
@@ -112,7 +112,7 @@ GameObject:
   - component: {fileID: 4559651743931242046}
   - component: {fileID: 4559651743931242044}
   - component: {fileID: 4559651743931242047}
-  m_Layer: 17
+  m_Layer: 18
   m_Name: WeaponPopup
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -249,8 +249,10 @@ GameObject:
   - component: {fileID: 4559651744037725750}
   - component: {fileID: 4559651744037725753}
   - component: {fileID: 4559651744037725752}
-  - component: {fileID: 4559651744037725751}
-  m_Layer: 17
+  - component: {fileID: 6079697066890774433}
+  - component: {fileID: 7198257172118970445}
+  - component: {fileID: 6351367672869197737}
+  m_Layer: 18
   m_Name: Weapon Interactable
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -314,15 +316,15 @@ SpriteRenderer:
   m_SortingLayerID: -1697107303
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 21300000, guid: e371a720f846bb24986369f65edb3966, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 2.7826087, y: 2.7826087}
+  m_Size: {x: 2.9166667, y: 1.0833334}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!114 &4559651744037725752
@@ -340,8 +342,41 @@ MonoBehaviour:
   popup: {fileID: 4559651743873223110}
   weapon: pistol
   spriteRenderer: {fileID: 4559651744037725753}
---- !u!58 &4559651744037725751
-CircleCollider2D:
+--- !u!50 &6079697066890774433
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559651744037725755}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 1
+  m_GravityScale: 1
+  m_Material: {fileID: 6200000, guid: 8920bd6e0593e8947a645caf1d5fe73c, type: 2}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4
+--- !u!114 &7198257172118970445
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4559651744037725755}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f37cd0b111b5f34da0cd76dd7bc5b89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!60 &6351367672869197737
+PolygonCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -350,9 +385,23 @@ CircleCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02423048, y: 0}
-  serializedVersion: 2
-  m_Radius: 3.2085958
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 2.9166667, y: 1.0833334}
+    newSize: {x: 2.9166667, y: 1.0833334}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  m_Points:
+    m_Paths:
+    - - {x: -1.4583334, y: 0.5416667}
+      - {x: -1.4583334, y: -0.5416667}
+      - {x: 0.9583334, y: -0.5416667}
+      - {x: 1.4583334, y: -0.375}
+      - {x: 1.4583334, y: 0.5416667}
