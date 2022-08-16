@@ -9,19 +9,35 @@ public class Card : MonoBehaviour
     [SerializeField]
     public string weaponName;
 
-    public GameObject frontImage,frontText,backText,front,back; 
+    public GameObject frontImage,frontText,backText,front,back;
+
+    public bool unlocked=false;
 
     public void SetCard(Weapon weapon)
-    {
+    { 
         weaponName = weapon.name;
         frontImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("Weapons/" + weapon.name);
         frontImage.GetComponent<Image>().preserveAspect = true;
 
-        StartCoroutine(SetSize());
-
-        frontText.GetComponent<TextMeshProUGUI>().text = weapon.displayName;  
+        frontImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,-73);
+        frontText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 45.4f);
+        StartCoroutine(SetSize()); 
 
         frontText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+         
+        if (PlayerPrefs.GetInt(weaponName, 0) == 1)
+        {
+            unlocked = true;
+        }
+        if (!unlocked)
+        {
+            frontImage.GetComponent<Image>().color = new Color32(0,0,0,255);
+            frontText.GetComponent<TextMeshProUGUI>().text = "???";
+        }
+        else
+        { 
+            frontText.GetComponent<TextMeshProUGUI>().text = weapon.displayName;
+        }
 
         if (backText)
         { 

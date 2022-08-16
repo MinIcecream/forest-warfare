@@ -163,15 +163,22 @@ public class PlayerMovement : MonoBehaviour
 
         if (previousKey == "a")
         {
-            rb.AddForce(-dashForce, ForceMode2D.Impulse);
-            var dust = Instantiate(dashDust, transform.position, Quaternion.identity);
-            dust.transform.RotateAround(transform.position, transform.up, 180f);
+            rb.AddForce(-dashForce, ForceMode2D.Impulse); 
+            if (!grounded)
+            { 
+                var dust = Instantiate(dashDust, transform.position, Quaternion.identity);
+                dust.transform.RotateAround(transform.position, transform.up, 180f);
+            }
         }
         else
         {
-            rb.AddForce(dashForce, ForceMode2D.Impulse);
-            Instantiate(dashDust, transform.position, Quaternion.identity);
+            rb.AddForce(dashForce, ForceMode2D.Impulse); 
+            if (!grounded)
+            { 
+                Instantiate(dashDust, transform.position, Quaternion.identity);
+            }
         }
+
          
     }
     void Walk()

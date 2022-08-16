@@ -8,31 +8,39 @@ public class PauseManager : MonoBehaviour
     public Animator anim;
     public bool paused;
 
+    bool canUnpause = true;
+
     public void Pause()
     {
-        paused = true;
-        GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
-        GameObject.FindWithTag("Player").GetComponent<SwapWeapon>().enabled = false;
-        panel.SetActive(true);
-        Time.timeScale = 0;
-    }
-
+        if (!paused)
+        { 
+            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
+            GameObject.FindWithTag("Player").GetComponent<SwapWeapon>().enabled = false;
+            panel.SetActive(true);
+            Time.timeScale = 0;
+            paused = true; 
+        } 
+    } 
     public void Unpause()
     {
-        anim.SetTrigger("Exit");
-        StartCoroutine(DisablePanel());
+        if (paused&&canUnpause)
+        {
+            anim.SetTrigger("Exit"); 
+            canUnpause = false;
+            StartCoroutine(DisablePanel());
+        } 
     }
 
     IEnumerator DisablePanel()
     {
-        yield return new WaitForSecondsRealtime(0.8f);
+        yield return new WaitForSecondsRealtime(.8f);
         panel.SetActive(false); 
         paused = false;
 
         GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = true;
         GameObject.FindWithTag("Player").GetComponent<SwapWeapon>().enabled = true;
-  
-        Time.timeScale = 1;
+        canUnpause = true;
+        Time.timeScale = 1; 
     }
 
     void Awake()

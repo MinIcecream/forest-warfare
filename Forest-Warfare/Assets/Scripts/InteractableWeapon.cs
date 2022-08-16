@@ -6,9 +6,9 @@ public class InteractableWeapon : MonoBehaviour
 {
     Vector3 initialPos;
     Vector3 distance;
-    float speed = 0.03f;
+   // float speed = 0.03f;
 
-    bool goingUp = true;
+    //bool goingUp = true;
 
     public GameObject popup;
 

@@ -25,6 +25,7 @@ TagManager:
   - AudioManager
   - WeaponList
   - BookCanvas
+  - UIPanel
   layers:
   - Default
   - TransparentFX
