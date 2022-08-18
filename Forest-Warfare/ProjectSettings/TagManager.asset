@@ -26,6 +26,7 @@ TagManager:
   - WeaponList
   - BookCanvas
   - UIPanel
+  - WeaponPopup
   layers:
   - Default
   - TransparentFX

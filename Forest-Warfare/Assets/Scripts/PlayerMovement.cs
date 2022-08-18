@@ -5,9 +5,9 @@ using System.Collections;
 public class PlayerMovement : MonoBehaviour
 {
     private float movementSpeed = 10f;
-    private Vector2 jumpForce = new Vector2(0, 20);
-    private Vector2 SlamForce = new Vector2(0, -25);
-    private Vector2 dashForce = new Vector2(30, 0);
+    public Vector2 jumpForce = new Vector2(0, 20);
+    public Vector2 SlamForce = new Vector2(0, -25);
+    public Vector2 dashForce = new Vector2(30, 0);
     private Vector3 movement;
 
     private float targetPos;
@@ -18,7 +18,7 @@ public class PlayerMovement : MonoBehaviour
     public int jumpCounter = 2;
     public bool grounded = true;
     public float checkRadius;
-    public LayerMask whatIsGround;
+    public LayerMask whatIsGround; 
 
     public GameObject feet;
     public GameObject doubleJumpDust;
