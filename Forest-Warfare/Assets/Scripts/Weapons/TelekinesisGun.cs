@@ -58,7 +58,7 @@ public class TelekinesisGun : MonoBehaviour
         }
 
 
-        if (dragging && hitObject != null && chargeScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
+        if (dragging && hitObject != null && chargeScript.canShoot && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
             if (!firing)
             {
@@ -78,5 +78,12 @@ public class TelekinesisGun : MonoBehaviour
             AudioManager.Stop("TelekinesisGun");
             firing = false;
         }
+    }
+    void OnDisable()
+    {
+        if (hitObject)
+        { 
+            hitObject.GetComponent<SpriteRenderer>().material = normal;
+        } 
     }
 }

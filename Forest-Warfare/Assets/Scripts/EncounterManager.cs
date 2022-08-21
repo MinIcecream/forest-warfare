@@ -10,7 +10,7 @@ public class EncounterManager : MonoBehaviour
     public float leftBarrierPos, rightBarrierPos;
     GameObject leftBarrier, rightBarrier;
 
-    public int currentWave = 0;
+    public int currentWave = 0; 
 
     [System.Serializable]
     public struct wave
@@ -125,4 +125,5 @@ public class EncounterManager : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
     }
+ 
 }

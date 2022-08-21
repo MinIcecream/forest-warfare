@@ -8,7 +8,7 @@ public class LevelSelectMouseDrag : MonoBehaviour
     Vector3 offset;
     public Transform left, right, top, bottom;
 
-    void Update()
+    void FixedUpdate()
     {
 
         Vector3 screenPos = Camera.main.ScreenToWorldPoint(transform.position);

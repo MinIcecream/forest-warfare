@@ -35,6 +35,8 @@ public class WeaponList : MonoBehaviour
     
     public static Weapon minigun = new Weapon("minigun", "common","Minigun", "description here");
 
+    public static Weapon plasmaPistol = new Weapon("plasmaPistol", "common", "Pistol", "description here");
+
     void Awake()
     {
         weaponList.Add(pistol);
@@ -48,5 +50,6 @@ public class WeaponList : MonoBehaviour
         weaponList.Add(ak47);
         weaponList.Add(sniper);
         weaponList.Add(minigun);
+        weaponList.Add(plasmaPistol);
     }
 }

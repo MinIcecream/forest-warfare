@@ -21,6 +21,8 @@ public class BoarManager : MonoBehaviour
 
     public FieldOfView FOV;
 
+    public GameObject weapon;
+
     void Awake()
     {
         player = GameObject.FindWithTag("Player");
@@ -82,6 +84,7 @@ public class BoarManager : MonoBehaviour
     {
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
+            weapon.SetActive(false);
             dead = true;
             GetComponent<EnemyDeath>().Death(deathParticles);
         }
@@ -126,6 +129,7 @@ public class BoarManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1f);
         GetComponent<BoarCharge>().enabled = true;
+        weapon.SetActive(true);
         if(player.transform.position.x > transform.position.x)
         {
             GetComponent<BoarCharge>().Direction(new Vector3(1,0,0));
@@ -137,7 +141,7 @@ public class BoarManager : MonoBehaviour
         GetComponent<FacePlayer>().enabled = false;
         yield return new WaitForSeconds(1.3f);
 
-         
+        weapon.SetActive(false);
         GetComponent<BoarCharge>().enabled = false;
         GetComponent<FacePlayer>().enabled = true;
         anim.SetBool("Attack", false);

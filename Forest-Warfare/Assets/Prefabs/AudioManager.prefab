@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 8.295175, y: 7.1290607, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -144,6 +145,13 @@ MonoBehaviour:
     source: {fileID: 0}
   - name: Crate
     clip: {fileID: 8300000, guid: 77853124eb25dc64481f5a8922de4a1e, type: 3}
+    isMusic: 0
+    isLoop: 0
+    volume: 1
+    pitch: 1
+    source: {fileID: 0}
+  - name: PlasmaPistolCharge
+    clip: {fileID: 8300000, guid: 53e4c92faabb58c4a85d683620f2f7b3, type: 3}
     isMusic: 0
     isLoop: 0
     volume: 1

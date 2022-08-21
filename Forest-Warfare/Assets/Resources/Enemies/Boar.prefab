@@ -374,6 +374,7 @@ MonoBehaviour:
   deathSound: {fileID: 6319023503847571823}
   deathParticles: {fileID: 8469391669340717468, guid: 62f5aeb79fde1e149b9889104d01bc66, type: 3}
   FOV: {fileID: 6319023503847571819}
+  weapon: {fileID: 6319023504830566516}
 --- !u!114 &6319023503847571857
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -746,7 +747,7 @@ GameObject:
   - component: {fileID: 6319023504830566515}
   - component: {fileID: 6319023504830566513}
   - component: {fileID: 6319023504830566514}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Weapon
   m_TagString: Enemy Weapon
   m_Icon: {fileID: 0}

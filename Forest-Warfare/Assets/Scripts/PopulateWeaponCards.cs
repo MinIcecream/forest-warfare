@@ -11,8 +11,7 @@ public class PopulateWeaponCards : MonoBehaviour
     WeaponList weaponList;
      
     void OnEnable()
-    {
-        Debug.Log("fodfdo");
+    { 
         weaponList = GameObject.FindWithTag("WeaponList").GetComponent<WeaponList>();
         foreach (Card child in GetComponentsInChildren<Card>())
         {

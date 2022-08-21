@@ -38,7 +38,7 @@ TagManager:
   - 
   - Player
   - Enemy
-  - Chainsaw
+  - OnlyWithPlayerEnemyAndInteractableTerrain
   - Player Projectile
   - Interactable Terrain
   - Only with terrain
@@ -48,7 +48,7 @@ TagManager:
   - OnlyWithPlayer
   - Only With Terrain uninteractable
   - OnlyPlayerAndEnemy
-  - 
+  - glow
   - 
   - 
   - 

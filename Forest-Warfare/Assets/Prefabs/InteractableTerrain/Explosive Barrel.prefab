@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 8680639999221279311}
   - component: {fileID: 8680639999221279664}
   - component: {fileID: 8680639999221279665}
-  - component: {fileID: 8680639999221279666}
   - component: {fileID: 8680639999221279667}
   - component: {fileID: 8680639999221279668}
   - component: {fileID: 8680639999221279669}
@@ -35,6 +34,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 43.4, y: -3.23, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8680639999406157337}
   m_Father: {fileID: 0}
@@ -53,18 +53,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.21451664, y: -0.7558415}
+  m_Offset: {x: 0.0018959045, y: 0.0028336048}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 8, y: 4}
+    oldSize: {x: 1.4166666, y: 1.75}
     newSize: {x: 8, y: 4}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.0739498, y: 1.5478091}
+  m_Size: {x: 1.2285843, y: 1.5381446}
   m_EdgeRadius: 0
 --- !u!114 &8680639999221279311
 MonoBehaviour:
@@ -121,7 +121,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f6665daca9833b9469a8bc228fb4a800, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,20 +153,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8680639999221279666
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8680639999221279672}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8da9ebefd43f84eb0400680abddbbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  outline: {fileID: 2100000, guid: f6665daca9833b9469a8bc228fb4a800, type: 2}
 --- !u!114 &8680639999221279667
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -251,6 +237,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8680639999221279671}
   m_RootOrder: 0
@@ -268,9 +255,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.15471172, y: -0.48991966}
+  m_Offset: {x: -0.033694506, y: -0.070291996}
   serializedVersion: 2
-  m_Radius: 3.6973743
+  m_Radius: 3.466153
 --- !u!114 &8680639999406157336
 MonoBehaviour:
   m_ObjectHideFlags: 0

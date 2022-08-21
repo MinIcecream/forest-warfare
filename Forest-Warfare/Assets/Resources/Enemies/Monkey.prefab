@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 2909126098804172167}
   - component: {fileID: 1767000897454495710}
   - component: {fileID: 6371528453530571731}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Weapon
   m_TagString: Enemy Weapon
   m_Icon: {fileID: 0}

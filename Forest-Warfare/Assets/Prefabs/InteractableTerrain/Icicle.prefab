@@ -28,6 +28,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7676386187612387602}
   m_RootOrder: 0
@@ -74,7 +75,6 @@ GameObject:
   - component: {fileID: 7676386187612387603}
   - component: {fileID: 7676386187612387600}
   - component: {fileID: 7676386187612387613}
-  - component: {fileID: 7676386187612387614}
   - component: {fileID: 7676386187612387612}
   m_Layer: 12
   m_Name: Icicle
@@ -93,6 +93,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 29.89, y: 0.49, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7676386186818387102}
   m_Father: {fileID: 0}
@@ -118,7 +119,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -225,20 +226,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trigger: 0
---- !u!114 &7676386187612387614
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7676386187612387606}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e8da9ebefd43f84eb0400680abddbbe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  outline: {fileID: 2100000, guid: f6665daca9833b9469a8bc228fb4a800, type: 2}
 --- !u!70 &7676386187612387612
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
