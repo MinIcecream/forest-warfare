@@ -33,6 +33,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -10.81, y: -3.98, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -102,9 +103,9 @@ CircleCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.086364746, y: 0}
+  m_Offset: {x: -0.086364746, y: 0.013483763}
   serializedVersion: 2
-  m_Radius: 1.4500046
+  m_Radius: 0.65443397
 --- !u!114 &7632692049682099207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -117,6 +118,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 964d795524b414045abab7de255e4e85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  piercing: 0
   dir: {x: 0, y: 0, z: 0}
 --- !u!114 &824299332388691626
 MonoBehaviour:
@@ -130,6 +132,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 055601f027c57f94bb00cac5711a905a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  active: 1
   damage: 10
 --- !u!114 &1214356406812531583
 MonoBehaviour:

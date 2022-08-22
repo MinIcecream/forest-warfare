@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class Icicle : MonoBehaviour
 {
@@ -26,6 +27,7 @@ public class Icicle : MonoBehaviour
             hitGround = true;
             range.SetActive(false);
             falling = false;
+            CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, .1f);
         }
     }
 }

@@ -32,25 +32,26 @@ public class PlasmaPistol : MonoBehaviour
         }
 
         if (Input.GetMouseButtonUp(0))
-        { 
-            charging = false; 
-
-            StartCoroutine(Delay());
-
-            AudioManager.Play("PlasmaPistol");
-
-            ammoScript.Shoot();
-
+        {   
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             Vector2 objPos = player.transform.position;
 
             if (newBullet)
             {
-                 newBullet.GetComponent<PlasmaOrb>().UnFollow();
-                 newBullet.GetComponent<PlasmaOrb>().dir = (mousePos - objPos);
+                newBullet.GetComponent<PlasmaOrb>().UnFollow();
+                newBullet.GetComponent<PlasmaOrb>().dir = (mousePos - objPos); 
 
                 AudioManager.Stop("PlasmaPistolCharge");
-            } 
+            }
+            if (charging)
+            { 
+                charging = false;
+
+                StartCoroutine(Delay());
+
+                AudioManager.Play("PlasmaPistol");
+                ammoScript.Shoot();
+            }
         }
     }
    

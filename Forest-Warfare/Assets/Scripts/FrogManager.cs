@@ -111,13 +111,13 @@ public class FrogManager : MonoBehaviour
             switch (frogMode)
             {
                 case EnemyFSM.Attack:
-                    if (Vector2.Distance(transform.position, player.transform.position) > 7 && isAttacking == false)
+                    if (Vector2.Distance(transform.position, player.transform.position) > 5 && isAttacking == false)
                     {
                         frogMode = EnemyFSM.Wander;
                     }
                     break;
                 case EnemyFSM.Wander:
-                    if (Vector2.Distance(transform.position, player.transform.position) <= 7)
+                    if (Vector2.Distance(transform.position, player.transform.position) <= 5)
                     {
                         frogMode = EnemyFSM.Attack;
                     }

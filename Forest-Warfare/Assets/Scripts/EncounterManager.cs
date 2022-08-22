@@ -2,7 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using System;
+using System; 
+#if UNITY_EDITOR
+using UnityEditor;
+#endif
 
 public class EncounterManager : MonoBehaviour
 {
@@ -15,7 +18,7 @@ public class EncounterManager : MonoBehaviour
     [System.Serializable]
     public struct wave
     {
-        public enemy[] enemies;
+        public List<enemy> enemies;
     }
     [System.Serializable]
     public struct enemy
@@ -23,7 +26,7 @@ public class EncounterManager : MonoBehaviour
         public Vector2 pos;
         public string name;
     }
-    public wave[] waves;
+    public List <wave> waves=new List<wave>();
 
     public Image fightIcon;
     public Image contArrow;
@@ -68,14 +71,14 @@ public class EncounterManager : MonoBehaviour
 
     public IEnumerator SpawnWaves()
     {
-        if (waves.Length <1)
+        if (waves.Count <1)
         {
             yield break;
         }
 
         bool spawnNewWave = true;
 
-        while (currentWave <= waves.Length)
+        while (currentWave <= waves.Count)
         {
             yield return new WaitForSeconds(1f);
 
@@ -101,15 +104,17 @@ public class EncounterManager : MonoBehaviour
     { 
         currentWaveEnemies.Clear();
 
-        if (waveNum < 0 || waveNum > waves.Length-1)
+        if (waveNum < 0 || waveNum > waves.Count-1)
         {
             return;
-        }
-        enemy[] w = waves[waveNum].enemies;
-        foreach(enemy e in w)
+        } 
+        List<enemy> w = waves[waveNum].enemies;
+        foreach (enemy e in w)
         {
-            GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemies/" + e.name), e.pos, Quaternion.identity);
-            currentWaveEnemies.Add(newEnemy);
+            if (e.name!=""){ 
+                GameObject newEnemy = Instantiate(Resources.Load<GameObject>("Enemies/" + e.name), e.pos, Quaternion.identity);
+                currentWaveEnemies.Add(newEnemy);
+            } 
         }
     }
 
@@ -125,5 +130,39 @@ public class EncounterManager : MonoBehaviour
             yield return new WaitForSeconds(0.005f);
         }
     }
- 
+
+#if UNITY_EDITOR
+    public GameObject[] enemiesToSave;
+    public int waveToSave;
+
+    public void SaveLevel()
+    {  
+        waves[waveToSave].enemies.Clear();
+
+        foreach(GameObject e in enemiesToSave)
+        {
+            enemy newEnemy = new enemy();
+            newEnemy.pos.x=e.transform.position.x;
+            newEnemy.pos.y=e.transform.position.y;
+            newEnemy.name=e.name;
+
+            waves[waveToSave].enemies.Add(newEnemy);
+        }
+    }
+}
+
+[CustomEditor(typeof(EncounterManager))]
+public class EncounterManagerEditor : Editor
+{
+    public override void OnInspectorGUI()
+    {
+        DrawDefaultInspector();
+
+        EncounterManager creator = (EncounterManager)target;
+        if (GUILayout.Button("Save Level"))
+        {
+            creator.SaveLevel();
+        }
+    }
+#endif
 }

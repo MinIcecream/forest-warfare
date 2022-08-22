@@ -41,6 +41,8 @@ public class PlayerMovement : MonoBehaviour
     public GameObject slamColl;
     public int staminaCost = 50;
 
+    public GameObject platform;
+
     void Update()
     {
         if (grounded)
@@ -121,6 +123,11 @@ public class PlayerMovement : MonoBehaviour
             ResetDashTimer();
         }
 
+        if (Input.GetKeyDown("s"))
+        {
+            platform.GetComponent<Effector2D>().colliderMask = 1;
+            StartCoroutine(PlatformCooldown());
+        }  
 
         float speed = Mathf.Abs(movement.x);
         anim.SetFloat("speed", speed);
@@ -237,5 +244,10 @@ public class PlayerMovement : MonoBehaviour
     public void enableMovement()
     {
         canMove = true;
+    }
+    IEnumerator PlatformCooldown()
+    {
+        yield return new WaitForSeconds(0.5f);
+        platform.GetComponent<Effector2D>().colliderMask = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Enemy"); 
     }
 }
