@@ -78,7 +78,6 @@ public class FrogManager : MonoBehaviour
             if (Vector2.Distance(transform.position, player.transform.position) > 7)
             {
                 Vector2 dir = new Vector2(player.transform.position.x - transform.position.x, player.transform.position.y - transform.position.y+10);
-                Debug.Log(dir.normalized * 800);
                 GetComponent<Rigidbody2D>().AddForce(dir.normalized * 800);
                 StartCoroutine(JumpCooldown());
             }
@@ -86,7 +85,6 @@ public class FrogManager : MonoBehaviour
             {
                 Vector2 dir = new Vector2(50*(player.transform.position.x - transform.position.x), player.transform.position.y - transform.position.y + 400);
                 GetComponent<Rigidbody2D>().AddForce(dir);
-                Debug.Log(dir);
                 StartCoroutine(JumpCooldown());
             }
         }

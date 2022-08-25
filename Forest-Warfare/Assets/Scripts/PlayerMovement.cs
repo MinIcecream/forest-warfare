@@ -50,8 +50,7 @@ public class PlayerMovement : MonoBehaviour
             ResetJump();
         }
         if (canMove)
-        {
-
+        { 
             CaptureInput();
         } 
     }
@@ -123,12 +122,14 @@ public class PlayerMovement : MonoBehaviour
             ResetDashTimer();
         }
 
-        if (Input.GetKeyDown("s"))
+        if (Input.GetKey("s"))
         {
-            platform.GetComponent<Effector2D>().colliderMask = 1;
+            platform.GetComponent<Effector2D>().colliderMask = 1; 
+        }
+        if (Input.GetKeyUp("s"))
+        { 
             StartCoroutine(PlatformCooldown());
-        }  
-
+        }
         float speed = Mathf.Abs(movement.x);
         anim.SetFloat("speed", speed);
     }
@@ -247,7 +248,7 @@ public class PlayerMovement : MonoBehaviour
     }
     IEnumerator PlatformCooldown()
     {
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         platform.GetComponent<Effector2D>().colliderMask = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Enemy"); 
     }
 }

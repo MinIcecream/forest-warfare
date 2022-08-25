@@ -21,7 +21,7 @@ public class WeaponList : MonoBehaviour
     public static Weapon rocketLauncher = new Weapon("rocketLauncher", "common","Rocket Launcher", "description here");
 
 
-    public static Weapon sword = new Weapon("sword", "common","Sword", "description here");
+    public static Weapon bonecrusher = new Weapon("bonecrusher", "common","Bonecrusher", "description here");
 
 
     public static Weapon flamethrower = new Weapon("flamethrower", "common","Flamethrower", "description here");
@@ -37,6 +37,8 @@ public class WeaponList : MonoBehaviour
 
     public static Weapon plasmaPistol = new Weapon("plasmaPistol", "common", "Pistol", "description here");
 
+    public static Weapon masterBlade = new Weapon("masterBlade", "common", "Master Blade", "description here");
+
     void Awake()
     {
         weaponList.Add(pistol);
@@ -44,12 +46,13 @@ public class WeaponList : MonoBehaviour
         weaponList.Add(telekinesisGun);
         weaponList.Add(grenadeLauncher);
         weaponList.Add(rocketLauncher);
-        weaponList.Add(sword);
+        weaponList.Add(bonecrusher);
         weaponList.Add(flamethrower);
         weaponList.Add(shotgun);
         weaponList.Add(ak47);
         weaponList.Add(sniper);
         weaponList.Add(minigun);
         weaponList.Add(plasmaPistol);
+        weaponList.Add(masterBlade);
     }
 }

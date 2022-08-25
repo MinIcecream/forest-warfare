@@ -9,11 +9,11 @@ public class PlasmaPistol : MonoBehaviour
     public WeaponAmmo ammoScript;
     public Transform spawnPt;
     public GameObject parent;
-    bool canShoot = true;
+    public bool canShoot = true;
     public float fireDelay;
     public float size = 0.1f;
 
-    bool charging = false;
+    public bool charging = false;
 
     GameObject newBullet;
 
@@ -35,23 +35,22 @@ public class PlasmaPistol : MonoBehaviour
         {   
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             Vector2 objPos = player.transform.position;
-
-            if (newBullet)
-            {
-                newBullet.GetComponent<PlasmaOrb>().UnFollow();
-                newBullet.GetComponent<PlasmaOrb>().dir = (mousePos - objPos); 
-
-                AudioManager.Stop("PlasmaPistolCharge");
-            }
-            if (charging)
-            { 
-                charging = false;
-
+             
+            if (charging&&newBullet)
+            {   
                 StartCoroutine(Delay());
 
                 AudioManager.Play("PlasmaPistol");
-                ammoScript.Shoot();
+                ammoScript.Shoot(); 
+                
+                newBullet.GetComponent<PlasmaOrb>().UnFollow();
+                newBullet.GetComponent<PlasmaOrb>().dir = (mousePos - objPos);
+                 
             }
+            charging = false;
+            AudioManager.Stop("PlasmaPistolCharge");
+
+            newBullet = null;
         }
     }
    
@@ -62,10 +61,15 @@ public class PlasmaPistol : MonoBehaviour
     }
     void OnDisable()
     {
-        if (newBullet)
+        if (newBullet&&charging)
         {
             Destroy(newBullet);
             AudioManager.Stop("PlasmaPistolCharge");
         }
+        newBullet = null;
+    }
+    void OnEnable()
+    {
+        canShoot = true;
     }
 }

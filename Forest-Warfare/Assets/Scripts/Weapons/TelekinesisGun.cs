@@ -21,6 +21,8 @@ public class TelekinesisGun : MonoBehaviour
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, bitmask);
 
+
+        //choosing the object 
         if (hit.collider != null)
         {
             chargeScript.customCondition = true;
@@ -57,7 +59,7 @@ public class TelekinesisGun : MonoBehaviour
             hitObject = null;
         }
 
-
+        //actually dragging chosen obj
         if (dragging && hitObject != null && chargeScript.canShoot && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
         {
             if (!firing)

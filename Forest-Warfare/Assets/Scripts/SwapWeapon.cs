@@ -49,15 +49,15 @@ public class SwapWeapon : MonoBehaviour
             } 
             transform.Find("Spear Parent").gameObject.SetActive(true);
         }
-        else if (weapon == "sword")
-        {
-            if (PlayerPrefs.GetInt("sword", 0) == 0)
+        else if (weapon == "bonecrusher")
+        { 
+            if (PlayerPrefs.GetInt("bonecrusher", 0) == 0)
             {
-                GameObject.FindWithTag("WeaponPopup").GetComponent<WeaponPopup>().Popup("Sword");
-                PlayerPrefs.SetInt("sword", 1);
+                GameObject.FindWithTag("WeaponPopup").GetComponent<WeaponPopup>().Popup("Bonecrusher");
+                PlayerPrefs.SetInt("bonecrusher", 1);
             }
              
-            transform.Find("Sword Parent").gameObject.SetActive(true);
+            transform.Find("Bonecrusher Parent").gameObject.SetActive(true);
         }
         else if (weapon == "telekinesisGun")
         {
@@ -149,9 +149,15 @@ public class SwapWeapon : MonoBehaviour
             } 
             transform.Find("Plasma Pistol Parent").gameObject.SetActive(true);
         }
-        else if(weapon=="none")
+        else if(weapon=="masterBlade")
         {
+            if (PlayerPrefs.GetInt("masterBlade", 0) == 0)
+            {
+                GameObject.FindWithTag("WeaponPopup").GetComponent<WeaponPopup>().Popup("Master Blade");
 
+                PlayerPrefs.SetInt("masterBlade", 1);
+            }
+            transform.Find("Master Blade Parent").gameObject.SetActive(true);
         }
     }
 }

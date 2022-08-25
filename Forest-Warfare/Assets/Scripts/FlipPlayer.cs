@@ -38,4 +38,15 @@ public class FlipPlayer : MonoBehaviour
             Flip();
         }
     }
+
+    public void FlipRight()
+    { 
+        sprite.flipX = false;
+        facingDir = "right";
+    }
+    public void FlipLeft()
+    { 
+        sprite.flipX = true;
+        facingDir = "left";
+    }
 }

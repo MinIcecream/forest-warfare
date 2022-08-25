@@ -30,21 +30,4 @@ public class SwordParent : MonoBehaviour
     {
         return Mathf.Atan2(a.y - b.y, a.x - b.x) * Mathf.Rad2Deg;
     }
-
-    void Update()
-    {
-        if (Input.GetMouseButton(0))
-        {
-            spin = true;
-        }
-        else
-        {
-            spin = false;
-        }
-    }
-    void OnEnable()
-    {
-        GameObject.FindGameObjectWithTag("ChargeUI").GetComponent<ChargeCounterUI>().HideUI();
-        GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<AmmoCounterUI>().HideUI();
-    }
 }
