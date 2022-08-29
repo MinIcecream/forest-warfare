@@ -24,7 +24,7 @@ public class Bonecrusher : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        if (Input.GetMouseButtonDown(0) && !GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused)
         {
             if (!charging&&!swinging)
             {

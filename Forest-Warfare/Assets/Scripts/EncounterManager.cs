@@ -44,8 +44,8 @@ public class EncounterManager : MonoBehaviour
     {
         encounterStarted = true;
 
-        leftBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(transform.position.x+leftBarrierPos, 0), Quaternion.identity);
-        rightBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(transform.position.x+rightBarrierPos, 0), Quaternion.identity);
+        leftBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(leftBarrierPos, 0), Quaternion.identity);
+        rightBarrier = Instantiate(Resources.Load<GameObject>("EncounterBarrier"), new Vector2(rightBarrierPos, 0), Quaternion.identity);
         leftBarrier.SetActive(true); 
         rightBarrier.SetActive(true);
         StartCoroutine(SpawnWaves());

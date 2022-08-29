@@ -54,6 +54,9 @@ public class PlayerHealth : MonoBehaviour
                 newWeapon.GetComponent<WeaponSprite>().SetSprite(GetComponent<SwapWeapon>().getWeapon());
                  
                 Invoke("StartDeathTransition", 2f);
+
+                List<string> playerInven = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>().inventoryWeapons;
+                CheckpointManager.SetPlayerItems(playerInven[0], playerInven[1], playerInven[2]);
             } 
         }
     }

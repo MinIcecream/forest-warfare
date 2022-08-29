@@ -40,7 +40,7 @@ public class InventoryManager : MonoBehaviour
 
     public void SwapItem(string weapon)
     {
-        if(activeSlot <= 1)
+        if (activeSlot <= 1)
         {
             inventoryWeapons[0] = weapon;
         }
@@ -52,7 +52,11 @@ public class InventoryManager : MonoBehaviour
         updateInventory();
         weaponSlots[activeSlot - 1].GetComponent<InventorySlot>().Select();
     }
-
+    public void SetInventorySlotWeapon(string weapon, int slot)
+    {
+        inventoryWeapons[slot] = weapon;
+        updateInventory();
+    }
     public string GetEquippedWeapon()
     {
         switch (activeSlot)
