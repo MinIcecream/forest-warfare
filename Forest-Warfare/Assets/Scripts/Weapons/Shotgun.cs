@@ -2,29 +2,37 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Shotgun : MonoBehaviour
+public class Shotgun : ProjectileWeapon 
 {
-    public GameObject bullet;
-    public GameObject player;
-    public WeaponAmmo ammoScript;
-    public Transform spawnPt;
+    public int min, max;
 
-    void Update()
+    protected override void Shoot()
     {
-        if (Input.GetMouseButtonDown(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
-        {
-            AudioManager.Play("Shotgun");
-            Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
-            Vector2 objPos = player.transform.position;
-            int bullets = Random.Range(4, 7);
-            ammoScript.Shoot();
+        PlayAudio();
+        Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
+        Vector2 objPos = player.transform.position; 
+        Vector2 normalizedMousePos = (mousePos - objPos).normalized; 
 
-            for (int i = 0; i < bullets; i++)
-            {
-                float yPos = Random.Range(mousePos.y - 2f, mousePos.y + 2f);
-                var newBullet = Instantiate(bullet, spawnPt.position, Quaternion.identity);
-                newBullet.GetComponent<BulletProjectile>().dir = (new Vector2(mousePos.x,yPos) - objPos).normalized;
-            } 
+        int bullets = Random.Range(min, max); 
+
+        for (int i = 0; i < bullets; i++)
+        {  
+            var newBullet = Instantiate(bullet, spawnPt.position, Quaternion.identity);
+            newBullet.GetComponent<BulletProjectile>().dir = Rotate(normalizedMousePos,Random.Range(-10,10));
         }
+
+        ammoScript.Shoot();
     }
+    public Vector2 Rotate(Vector2 v, float degrees)
+    {
+        float sin = Mathf.Sin(degrees * Mathf.Deg2Rad);
+        float cos = Mathf.Cos(degrees * Mathf.Deg2Rad);
+
+        float tx = v.x;
+        float ty = v.y;
+        v.x = (cos * tx) - (sin * ty);
+        v.y = (sin * tx) + (cos * ty);
+        return v;
+    }
+    
 }

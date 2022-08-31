@@ -8,7 +8,7 @@ public class LevelSelectMouseDrag : MonoBehaviour
     Vector3 offset;
     public Transform left, right, top, bottom;
 
-    void FixedUpdate()
+    void LateUpdate()
     {
 
         Vector3 screenPos = Camera.main.ScreenToWorldPoint(transform.position);
@@ -53,41 +53,43 @@ public class LevelSelectMouseDrag : MonoBehaviour
 
         float topPos = Camera.main.WorldToScreenPoint(top.position).y;
         float bottomPos = Camera.main.WorldToScreenPoint(bottom.position).y;
+
+
         if (topPos - bottomPos < Camera.main.pixelHeight)
-        {
-
+        { 
             transform.localScale = new Vector2(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f);
         }
-        if (rightPos - leftPos < Camera.main.pixelWidth)
-        {
-
+        else if (rightPos - leftPos < Camera.main.pixelWidth)
+        { 
             transform.localScale = new Vector2(transform.localScale.x + 0.1f, transform.localScale.y + 0.1f);
         }
-        if (leftPos > 0)
+
+        if (leftPos > -20)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(thisPos - new Vector3(leftPos+20, transform.position.y, 0));
+            Debug.Log(leftPos);
+            transform.position = Camera.main.ScreenToWorldPoint(thisPos - new Vector3(leftPos, transform.position.y, 0));
         }
 
-        if (rightPos < Camera.main.pixelWidth)
-        {
-            float difference = 20+Camera.main.pixelWidth - rightPos;
+        else if (rightPos < Camera.main.pixelWidth)
+        { 
+            float difference = Camera.main.pixelWidth - rightPos;
             transform.position = Camera.main.ScreenToWorldPoint(thisPos + new Vector3(difference, transform.position.y, 0));
 
         }
 
         thisPos = Camera.main.WorldToScreenPoint(transform.position);
 
-        if (bottomPos > 0)
+        if (bottomPos > -20)
         {
-            transform.position = Camera.main.ScreenToWorldPoint(thisPos - new Vector3(transform.position.x, bottomPos+20, 0));
+            transform.position = Camera.main.ScreenToWorldPoint(thisPos - new Vector3(transform.position.x, bottomPos, 0));
         }
 
-        if (topPos < Camera.main.pixelHeight)
+        else if (topPos < Camera.main.pixelHeight)
         {
-            float difference = 20+Camera.main.pixelHeight - topPos;
+            float difference = Camera.main.pixelHeight - topPos;
             transform.position = Camera.main.ScreenToWorldPoint(thisPos + new Vector3(transform.position.x, difference, 0));
         }
-
+         
         transform.position = new Vector3(transform.position.x, transform.position.y, 1);
 
     }

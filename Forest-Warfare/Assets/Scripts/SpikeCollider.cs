@@ -6,15 +6,21 @@ public class SpikeCollider : MonoBehaviour
 {
     public bool active = true;
     public int damage;
-    void OnTriggerEnter2D(Collider2D coll)
+    public List<GameObject> hitEnemies = new List<GameObject>();
+
+    void OnTriggerStay2D(Collider2D coll)
     {
         if (active)
         {
             if (coll.gameObject.tag == "Enemy")
             {
-                AudioManager.Play("MeleeHit");
-                coll.gameObject.GetComponent<EnemyHealth>().DealDamage(damage);
-
+                if (!hitEnemies.Contains(coll.gameObject))
+                {
+                    AudioManager.Play("MeleeHit");
+                    coll.gameObject.GetComponent<EnemyHealth>().DealDamage(damage);
+                    hitEnemies.Add(coll.gameObject);
+                    StartCoroutine(Cooldown(coll.gameObject));
+                } 
             }
             else if (coll.gameObject.tag == "Interactable Terrain")
             {
@@ -22,8 +28,18 @@ public class SpikeCollider : MonoBehaviour
             }
             else if (coll.gameObject.tag == "Player")
             {
-                coll.gameObject.GetComponent<PlayerHealth>().DealDamage(damage);
+                if (!hitEnemies.Contains(coll.gameObject))
+                {
+                    hitEnemies.Add(coll.gameObject); 
+                    coll.gameObject.GetComponent<PlayerHealth>().DealDamage(damage);
+                    StartCoroutine(Cooldown(coll.gameObject));
+                }
             }
         }
+    }
+    IEnumerator Cooldown(GameObject obj)
+    {
+        yield return new WaitForSeconds(1.5f);
+        hitEnemies.Remove(obj);
     }
 }

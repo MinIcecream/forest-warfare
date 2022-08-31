@@ -10,6 +10,24 @@ public class PauseManager : MonoBehaviour
 
     bool canUnpause = true;
 
+    public static PauseManager instance;
+
+    void Awake()
+    { 
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Time.timeScale = 1;
+        DontDestroyOnLoad(gameObject);
+    }
+
     public void Pause()
     {
         if (!paused)
@@ -42,9 +60,9 @@ public class PauseManager : MonoBehaviour
         canUnpause = true;
         Time.timeScale = 1; 
     }
-
-    void Awake()
+     
+    public static bool IsPaused()
     {
-        Time.timeScale = 1;
+        return instance.paused;
     }
 }

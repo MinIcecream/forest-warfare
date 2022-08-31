@@ -30,6 +30,7 @@ public class Minigun : MonoBehaviour
             shooting = false;
         }
     }
+
     IEnumerator shoot()
     {
         while (shooting)
@@ -44,6 +45,7 @@ public class Minigun : MonoBehaviour
             yield return new WaitForSeconds(0.06f);
         }
     }
+
     void OnDisable()
     {
         if (GameObject.FindWithTag("AudioManager"))

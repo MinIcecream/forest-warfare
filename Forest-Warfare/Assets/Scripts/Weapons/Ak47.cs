@@ -2,38 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ak47 : MonoBehaviour
-{
-    public GameObject bullet;
-    public GameObject player;
-    public WeaponAmmo ammoScript;
-    public Transform spawnPt;
+public class Ak47 : ProjectileWeapon
+{ 
     public PlayerLook rotate;
 
     bool shooting = false;
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
+        if (Input.GetMouseButton(0) && ammoScript.canShoot == true && !PauseManager.IsPaused())
         {
             if (!shooting)
             {
-                AudioManager.Play("Ak47");
+                PlayAudio();
                 shooting = true;
                 StartCoroutine(shoot());
             }
         }
         else
         {
-            AudioManager.Stop("Ak47");
+            StopAudio();
             shooting = false;
         }
-    }
+    } 
     IEnumerator shoot()
     {
         while (shooting)
-        {
-
+        { 
             ammoScript.Shoot();
             rotate.Shake(-5,5);
             Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
