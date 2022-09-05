@@ -2,16 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class RocketProjectile : MonoBehaviour
-{
-    public Rigidbody2D rb;
+public class RocketProjectile : Projectile
+{ 
     public Explode explode;
     GameObject explosionColl;
-    public void SetDir(Vector2 dir)
-    {
-        rb.AddForce(dir * 12, ForceMode2D.Impulse);
-         
-    }
+
     void FixedUpdate()
     {
         float angle = Mathf.Atan2(rb.velocity.y, rb.velocity.x) * Mathf.Rad2Deg;

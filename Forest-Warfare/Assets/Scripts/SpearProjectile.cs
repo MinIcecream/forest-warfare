@@ -2,19 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpearProjectile : MonoBehaviour
-{
-    public Rigidbody2D rb;
+public class SpearProjectile : Projectile
+{ 
     public bool hasHit = false;
-
-    public Collider2D cirCollider;
-
     float despawnTime = 5f;
 
-    public void Propel(Vector2 dir)
-    {
-        rb.AddForce(dir *80, ForceMode2D.Impulse);
-    }
+    public GameObject platform;
+    public Collider2D baseColl;
+
+    public Transform pt, tipPt;
 
     float AngleBetweenTwoPoints(Vector3 a, Vector3 b)
     {
@@ -47,8 +43,8 @@ public class SpearProjectile : MonoBehaviour
     {
         if (coll.gameObject.tag == "Ground")
         {
-            hasHit = true;
-            cirCollider.enabled = false;
+            Invoke("SetPlatform", 0.5f);
+            hasHit = true; 
             rb.velocity = Vector3.zero;
             rb.gravityScale = 0f;
         }
@@ -57,5 +53,16 @@ public class SpearProjectile : MonoBehaviour
     void timerEnd()
     {
         Destroy(gameObject);
+    }
+    void SetPlatform()
+    { 
+        if (tipPt.position.x < pt.position.x)
+        {
+            platform.GetComponent<PlatformEffector2D>().rotationalOffset = 180;
+        } 
+        platform.layer = LayerMask.NameToLayer("Platform");
+        baseColl.enabled = false;
+        GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+        platform.SetActive(true);
     }
 }

@@ -13,7 +13,6 @@ GameObject:
   - component: {fileID: 4945885059329307029}
   - component: {fileID: -651230432850955121}
   - component: {fileID: 5711101622642861736}
-  - component: {fileID: 3350967119486981278}
   m_Layer: 0
   m_Name: Barrel Explosion
   m_TagString: Untagged
@@ -4822,7 +4821,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cdf5f23121cfa874288faf14b181bdd1, type: 2}
+  - {fileID: 2100000, guid: d1b7f1b219fc53c41b3a269445a24c98, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4982,20 +4981,3 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3350967119486981278
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5411367744568228365}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 61aead45f07c0374196dd6ed3993c0e4, type: 2}

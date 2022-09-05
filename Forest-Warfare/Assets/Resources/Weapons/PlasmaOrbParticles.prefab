@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 8902687299453419396}
   - component: {fileID: 5066666826004782512}
   - component: {fileID: 2004536503160886688}
-  - component: {fileID: 5231293711835963849}
   m_Layer: 0
   m_Name: PlasmaOrbParticles
   m_TagString: Untagged
@@ -1365,7 +1364,7 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 0.38679248, g: 0, b: 0.332473, a: 1}
+        key0: {r: 0.29554266, g: 0, b: 0.3882353, a: 1}
         key1: {r: 1, g: 0, b: 0.7112603, a: 0}
         key2: {r: 0, g: 0, b: 0, a: 0}
         key3: {r: 0, g: 0, b: 0, a: 0}
@@ -4821,7 +4820,7 @@ ParticleSystemRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cdf5f23121cfa874288faf14b181bdd1, type: 2}
+  - {fileID: 2100000, guid: 2f992d914e3234641a7e2ca294079f03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4885,20 +4884,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   despawnTime: 2
---- !u!114 &5231293711835963849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2509835499299024605}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: 59396c2413045184993e40b2b586402a, type: 2}

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MasterBlade : MonoBehaviour
+public class MasterBlade : MeleeWeapon
 {
     public int slashDamage;
 
@@ -26,7 +26,7 @@ public class MasterBlade : MonoBehaviour
     public GameObject sprite;
 
     void Update()
-    {
+    { 
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, bitmask);
@@ -65,14 +65,7 @@ public class MasterBlade : MonoBehaviour
                 objChosen = false;
             }
         } 
-    }
-    void OnDisable()
-    {
-        if (hitObject)
-        {
-            hitObject.GetComponent<SpriteRenderer>().material = normal;
-        }
-    }
+    } 
     void Slice(Vector3 pos)
     {
         var newSlice=Instantiate(slice, pos, Quaternion.identity); 
@@ -162,12 +155,20 @@ public class MasterBlade : MonoBehaviour
     }
     void OnEnable()
     {
-        GameObject.FindGameObjectWithTag("ChargeUI").GetComponent<ChargeCounterUI>().HideUI();
-        GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<AmmoCounterUI>().HideUI();
-
+        base.OnEnable();
+        GetComponent<Collider2D>().enabled = true;
         foreach(GameObject obj in hitEnemies)
         {
             StartCoroutine(Remove(obj));
+        }
+    }
+    void OnDisable()
+    { 
+        base.OnDisable();
+        GetComponent<Collider2D>().enabled = false;
+        if (hitObject)
+        {
+            hitObject.GetComponent<SpriteRenderer>().material = normal;
         }
     }
 }

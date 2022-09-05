@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using EZCameraShake;
 
-public class Bonecrusher : MonoBehaviour
+public class Bonecrusher : MeleeWeapon
 {
     bool charging = false;
     public float angle = 0;
@@ -23,10 +23,10 @@ public class Bonecrusher : MonoBehaviour
     public Material shine;
 
     void Update()
-    {
-        if (Input.GetMouseButtonDown(0) && !GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused)
+    { 
+        if (Input.GetMouseButtonDown(0) && !PauseManager.IsPaused())
         {
-            if (!charging&&!swinging)
+            if (!charging && !swinging)
             {
                 transform.parent.gameObject.GetComponent<PlayerLook>().enabled = false;
                 GetComponent<GunFlip>().enabled = false;
@@ -86,13 +86,7 @@ public class Bonecrusher : MonoBehaviour
         { 
             GetComponent<SpriteRenderer>().material = normal;
         }
-    }
-    void OnEnable()
-    {
-        GameObject.FindGameObjectWithTag("ChargeUI").GetComponent<ChargeCounterUI>().HideUI();
-        GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<AmmoCounterUI>().HideUI();
-         
-    }
+    } 
     IEnumerator Swing()
     { 
         swinging = true;
@@ -149,5 +143,15 @@ public class Bonecrusher : MonoBehaviour
         {
             coll.gameObject.GetComponent<TerrainTrigger>().trigger = true;
         } 
+    }
+    void OnEnable()
+    {
+        base.OnEnable();
+        GetComponent<Collider2D>().enabled = true; 
+    }
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        GetComponent<Collider2D>().enabled = false;
     }
 }

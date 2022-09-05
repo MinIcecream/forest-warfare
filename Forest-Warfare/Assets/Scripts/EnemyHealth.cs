@@ -8,13 +8,15 @@ public class EnemyHealth : MonoBehaviour
 
     public EnemyHealthBar healthBar;
 
+    public int startHealth;
+
     public int getHealth()
     {
         return health;
     }
     void Start()
     {
-        health = 100;
+        health = startHealth;
         if (healthBar)
         {
             healthBar.SetMaxHealth(health);

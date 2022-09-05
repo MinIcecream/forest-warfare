@@ -74,9 +74,9 @@ GameObject:
   - component: {fileID: 7165219412331266692}
   - component: {fileID: 7165219412331266694}
   - component: {fileID: 7165219412331266695}
-  - component: {fileID: 7165219412331266689}
   - component: {fileID: 9126149818789587865}
   - component: {fileID: 3323466881123111893}
+  - component: {fileID: 230021381034251946}
   m_Layer: 13
   m_Name: Grenade
   m_TagString: Untagged
@@ -202,19 +202,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explode: {fileID: 9126149818789587865}
---- !u!114 &7165219412331266689
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7165219412331266693}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2d9871551a70e7241bd5fc365fbb0926, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 2317073016521396726}
 --- !u!114 &9126149818789587865
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,3 +231,17 @@ MonoBehaviour:
   drag: 0
   cam: {fileID: 0}
   rb: {fileID: 2317073016521396726}
+--- !u!114 &230021381034251946
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7165219412331266693}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c90fd91657a8d342927bf821937c3d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 2317073016521396726}
+  magnitude: 12

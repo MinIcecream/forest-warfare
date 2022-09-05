@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Spear : MonoBehaviour
+public class Spear : MeleeWeapon
 {
     float max = 3f;
     public GameObject spear;
@@ -33,12 +33,12 @@ public class Spear : MonoBehaviour
         transform.localPosition = new Vector2(distance, 0);
     }
     void Update()
-    {
+    { 
         if (Input.GetMouseButtonDown(0))
         {
             initialPos = (Vector3)Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
         }
-        if (Input.GetMouseButtonUp(0) && ammoScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
+        if (Input.GetMouseButtonUp(0) && ammoScript.canShoot && !PauseManager.IsPaused())
         {
             finalPos = (Vector3)Camera.main.ScreenToViewportPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
             
@@ -49,7 +49,14 @@ public class Spear : MonoBehaviour
     }
     void OnEnable()
     {
+        base.OnEnable();
+        GetComponent<Collider2D>().enabled = true;
         GameObject.FindGameObjectWithTag("AmmoUI").GetComponent<AmmoCounterUI>().HideUI();
         GameObject.FindGameObjectWithTag("ChargeUI").GetComponent<ChargeCounterUI>().HideUI();
+    }
+    public override void OnDisable()
+    {
+        base.OnDisable();
+        GetComponent<Collider2D>().enabled = false;
     }
 }

@@ -2,17 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BulletProjectile : MonoBehaviour
+public class BulletProjectile : Projectile
 {
     public bool piercing;
 
     public Vector3 dir;
     float speed = 30f;
-    Rigidbody2D rb;
-
-    void Awake()
+    public override void Propel(Vector2 vector)
     {
-        rb = GetComponent<Rigidbody2D>();
+        dir = vector;
     }
     void FixedUpdate()
     {

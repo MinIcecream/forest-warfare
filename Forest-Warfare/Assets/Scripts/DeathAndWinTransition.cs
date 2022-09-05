@@ -3,10 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-
 public class DeathAndWinTransition : MonoBehaviour
 {
     public RectTransform fader;
+
     public void StartTransition()
     {
         fader.gameObject.SetActive(true);

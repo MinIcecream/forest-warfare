@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ChargeWeapon : MonoBehaviour
+public class MeleeWeaponKnockup : MonoBehaviour
 {
     // Start is called before the first frame update
     void Start()

@@ -8,42 +8,38 @@ public class Ak47 : ProjectileWeapon
 
     bool shooting = false;
 
-    void Update()
+    bool onCooldown = false;
+
+    public override void ContinuouslyFiring()
+    { 
+        if (!shooting && !onCooldown)
+        {
+            onCooldown = true;
+            StartCoroutine(shootCooldown());
+            PlayAudio();
+            shooting = true;
+            StartCoroutine(shoot());
+        }
+    }
+    public override void NotContinuouslyFiring()
     {
-        if (Input.GetMouseButton(0) && ammoScript.canShoot == true && !PauseManager.IsPaused())
-        {
-            if (!shooting)
-            {
-                PlayAudio();
-                shooting = true;
-                StartCoroutine(shoot());
-            }
-        }
-        else
-        {
-            StopAudio();
-            shooting = false;
-        }
-    } 
+        StopAudio();
+        shooting = false; 
+    }
     IEnumerator shoot()
     {
         while (shooting)
-        { 
-            ammoScript.Shoot();
+        {  
             rotate.Shake(-5,5);
-            Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
-            Vector2 objPos = player.transform.position;
 
-            var newBullet = Instantiate(bullet, spawnPt.position, Quaternion.identity);
-            newBullet.GetComponent<BulletProjectile>().dir = (mousePos - objPos).normalized;
+            SpawnProjectile();
             yield return new WaitForSeconds(0.15f);
         }
-    }
-    void OnDisable()
+    } 
+
+    IEnumerator shootCooldown()
     {
-        if (GameObject.FindWithTag("AudioManager"))
-        {
-            AudioManager.Stop("Ak47");
-        } 
+        yield return new WaitForSeconds(0.15f);
+        onCooldown = false;
     }
 }

@@ -8,6 +8,26 @@ public class SwapWeapon : MonoBehaviour
     string weapon;
 
     public InventoryManager inventoryManager;
+
+    public BaseWeaponTemplate pistol, spear, bonecrusher, telekinesisGun, flamethrower, grenadeLauncher, rocketLauncher, minigun, ak47, sniper, shotgun, plasmaPistol, masterBlade;
+    List<BaseWeaponTemplate> weapons = new List<BaseWeaponTemplate>();
+
+    void Awake()
+    {
+        weapons.Add(pistol);
+        weapons.Add(spear);
+        weapons.Add(bonecrusher);
+        weapons.Add(telekinesisGun);
+        weapons.Add(flamethrower);
+        weapons.Add(grenadeLauncher);
+        weapons.Add(rocketLauncher);
+        weapons.Add(minigun);
+        weapons.Add(ak47);
+        weapons.Add(sniper);
+        weapons.Add(shotgun);
+        weapons.Add(plasmaPistol);
+        weapons.Add(masterBlade);
+    }
     public string getWeapon()
     {
         return weapon;
@@ -24,9 +44,9 @@ public class SwapWeapon : MonoBehaviour
 
     void UpdateWeapon()
     {
-        foreach (Transform child in transform)
+        foreach (BaseWeaponTemplate w in weapons)
         {
-            child.gameObject.SetActive(false);
+            w.enabled = false;
         }
         transform.Find("Feet").gameObject.SetActive(true);
 
@@ -36,8 +56,8 @@ public class SwapWeapon : MonoBehaviour
             {
                 GameObject.FindWithTag("WeaponPopup").GetComponent<WeaponPopup>().Popup("Pistol");
                 PlayerPrefs.SetInt("pistol", 1);
-            } 
-            transform.Find("Pistol Parent").gameObject.SetActive(true);
+            }
+            pistol.enabled = true;
         }
         else if (weapon == "spear")
         {
@@ -47,7 +67,7 @@ public class SwapWeapon : MonoBehaviour
 
                 PlayerPrefs.SetInt("spear", 1);
             } 
-            transform.Find("Spear Parent").gameObject.SetActive(true);
+            spear.enabled = true;
         }
         else if (weapon == "bonecrusher")
         { 
@@ -55,9 +75,8 @@ public class SwapWeapon : MonoBehaviour
             {
                 GameObject.FindWithTag("WeaponPopup").GetComponent<WeaponPopup>().Popup("Bonecrusher");
                 PlayerPrefs.SetInt("bonecrusher", 1);
-            }
-             
-            transform.Find("Bonecrusher Parent").gameObject.SetActive(true);
+            } 
+            bonecrusher.enabled = true;
         }
         else if (weapon == "telekinesisGun")
         {
@@ -67,7 +86,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("telekinesisGun", 1);
             }
             PlayerPrefs.SetInt("telekinesisGun", 1);
-            transform.Find("Telekinesis Gun Parent").gameObject.SetActive(true);
+            telekinesisGun.enabled = true;
         }
         else if (weapon == "flamethrower")
         {
@@ -77,7 +96,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("flamethrower", 1);
             }
             PlayerPrefs.SetInt("flamethrower", 1);
-            transform.Find("Flamethrower Parent").gameObject.SetActive(true);
+            flamethrower.enabled = true;
         }
         else if (weapon == "grenadeLauncher")
         {
@@ -87,7 +106,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("grenadeLauncher", 1);
             }
             PlayerPrefs.SetInt("grenadeLauncher", 1);
-            transform.Find("Grenade Launcher Parent").gameObject.SetActive(true);
+            grenadeLauncher.enabled = true;
         }
         else if (weapon == "rocketLauncher")
         {
@@ -97,7 +116,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("rocketLauncher", 1);
             }
              
-            transform.Find("Rocket Launcher Parent").gameObject.SetActive(true);
+            rocketLauncher.enabled = true;
         }
         else if (weapon == "ak47")
         {
@@ -107,7 +126,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("ak47", 1);
             }
              
-            transform.Find("Ak47 Parent").gameObject.SetActive(true);
+            ak47.enabled = true;
         }
         else if (weapon == "minigun")
         {
@@ -117,7 +136,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("minigun", 1);
             }
              
-            transform.Find("Minigun Parent").gameObject.SetActive(true);
+            minigun.enabled = true;
         }
         else if (weapon == "sniper")
         {
@@ -127,7 +146,7 @@ public class SwapWeapon : MonoBehaviour
                 PlayerPrefs.SetInt("sniper", 1);
             }
              
-            transform.Find("Sniper Parent").gameObject.SetActive(true);
+            sniper.enabled = true;
         }
         else if (weapon == "shotgun")
         {
@@ -137,7 +156,7 @@ public class SwapWeapon : MonoBehaviour
 
                 PlayerPrefs.SetInt("shotgun", 1);
             } 
-            transform.Find("Shotgun Parent").gameObject.SetActive(true);
+            shotgun.enabled = true;
         }
         else if (weapon == "plasmaPistol")
         {
@@ -147,7 +166,7 @@ public class SwapWeapon : MonoBehaviour
 
                 PlayerPrefs.SetInt("plasmaPistol", 1);
             } 
-            transform.Find("Plasma Pistol Parent").gameObject.SetActive(true);
+            plasmaPistol.enabled = true;
         }
         else if(weapon=="masterBlade")
         {
@@ -157,7 +176,7 @@ public class SwapWeapon : MonoBehaviour
 
                 PlayerPrefs.SetInt("masterBlade", 1);
             }
-            transform.Find("Master Blade Parent").gameObject.SetActive(true);
+            masterBlade.enabled = true;
         }
     }
 }

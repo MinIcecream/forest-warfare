@@ -2,16 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Flamethrower : MonoBehaviour
+public class Flamethrower : ChargeWeapon
 {
     public ParticleSystem flames;
     public float tickTime = 0f;
     public int damage = 20;
     private List<Collider2D> colliders = new List<Collider2D>();
-
-    public WeaponCharge chargeScript;
-    bool firing;
-
+     
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!colliders.Contains(other))
@@ -27,25 +24,7 @@ public class Flamethrower : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButton(0) && chargeScript.canShoot == true && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
-        {
-            if (!firing)
-            {
-                AudioManager.Play("Flamethrower");
-                GetComponent<BoxCollider2D>().enabled = true;
-                ParticleSystem.EmissionModule em = flames.emission;
-                em.enabled = true;
-                firing = true;
-            } 
-        }
-        else
-        {
-            firing = false;
-            AudioManager.Stop("Flamethrower");
-            GetComponent<BoxCollider2D>().enabled = false;
-            ParticleSystem.EmissionModule em = flames.emission;
-            em.enabled = false;
-        }
+        base.Update();
 
         tickTime -= Time.deltaTime;
 
@@ -53,6 +32,25 @@ public class Flamethrower : MonoBehaviour
         {
             timerEnd();
         }
+    }
+    public override void ContinuouslyFiring()
+    {
+        if (!firing)
+        {
+            PlayAudio();
+            GetComponent<BoxCollider2D>().enabled = true;
+            ParticleSystem.EmissionModule em = flames.emission;
+            em.enabled = true;
+            firing = true;
+        }
+    }
+    public override void NotContinuouslyFiring()
+    { 
+        StopAudio();
+        GetComponent<BoxCollider2D>().enabled = false;
+        ParticleSystem.EmissionModule em = flames.emission;
+        em.enabled = false;
+        firing = false;
     }
     void timerEnd()
     {
@@ -77,11 +75,14 @@ public class Flamethrower : MonoBehaviour
             }
         }
     }
-    void OnDisable()
+    public void OnDisable()
     {
-        if (GameObject.FindWithTag("AudioManager"))
-        {
-            AudioManager.Stop("Flamethrower");
-        }
+        base.OnDisable();
+        firing = false;
+        AudioManager.Stop("Flamethrower");
+        GetComponent<BoxCollider2D>().enabled = false;
+        ParticleSystem.EmissionModule em = flames.emission;
+        em.enabled = false;
+        StopAudio();
     }
 }

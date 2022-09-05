@@ -5061,6 +5061,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2909126100672697944}
+  startHealth: 100
 --- !u!114 &2909126098852306211
 MonoBehaviour:
   m_ObjectHideFlags: 0

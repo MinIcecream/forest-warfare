@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TelekinesisGun : MonoBehaviour
+public class TelekinesisGun : ChargeWeapon
 {
     int bitmask = 1 << 12 | 1<<9 | 1 << 13;
 
@@ -12,11 +12,10 @@ public class TelekinesisGun : MonoBehaviour
     GameObject hitObject;
 
     bool objChosen = false;
-
-    public WeaponCharge chargeScript;
-    bool firing;
+     
     void Update()
     {
+        base.Update();
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
         RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 100, bitmask);
@@ -57,32 +56,33 @@ public class TelekinesisGun : MonoBehaviour
             dragging = false;
             objChosen = false;
             hitObject = null;
-        }
-
-        //actually dragging chosen obj
-        if (dragging && hitObject != null && chargeScript.canShoot && GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == false)
+        }  
+    } 
+    public override void ContinuouslyFiring()
+    { 
+        if (dragging && hitObject != null)
         {
             if (!firing)
             {
                 firing = true;
                 AudioManager.Play("TelekinesisGun");
-            } 
+            }
             if (hitObject.GetComponent<MouseDrag>() != null)
-            {
-
+            { 
                 hitObject.GetComponent<MouseDrag>().drag = true;
                 //hitObject.GetComponent<Outline>().OutlineObject();
-                hitObject.GetComponent<SpriteRenderer>().material=outlineMat;
+                hitObject.GetComponent<SpriteRenderer>().material = outlineMat;
             }
         }
-        else
-        {
-            AudioManager.Stop("TelekinesisGun");
-            firing = false;
-        }
+    }
+    public override void NotContinuouslyFiring()
+    { 
+        AudioManager.Stop("TelekinesisGun");
+        firing = false;
     }
     void OnDisable()
     {
+        base.OnDisable();
         if (hitObject)
         { 
             hitObject.GetComponent<SpriteRenderer>().material = normal;

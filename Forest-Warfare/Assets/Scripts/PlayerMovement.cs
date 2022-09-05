@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using EZCameraShake;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -40,8 +41,7 @@ public class PlayerMovement : MonoBehaviour
 
     public GameObject slamColl;
     public int staminaCost = 50;
-
-    public GameObject platform;
+     
 
     void Update()
     {
@@ -124,7 +124,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (Input.GetKey("s"))
         {
-            platform.GetComponent<Effector2D>().colliderMask = 1; 
+            Effector2D[] effectors = (Effector2D[])GameObject.FindObjectsOfType(typeof(Effector2D));
+            foreach(Effector2D plats in effectors)
+            {
+                plats.colliderMask = 1;
+            } 
         }
         if (Input.GetKeyUp("s"))
         { 
@@ -249,6 +253,11 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator PlatformCooldown()
     {
         yield return new WaitForSeconds(0.2f);
-        platform.GetComponent<Effector2D>().colliderMask = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Enemy"); 
+
+        Effector2D[] effectors = (Effector2D[])GameObject.FindObjectsOfType(typeof(Effector2D));
+        foreach (Effector2D plats in effectors)
+        {
+            plats.colliderMask = 1 << LayerMask.NameToLayer("Player") | 1 << LayerMask.NameToLayer("Enemy");
+        } 
     }
 }

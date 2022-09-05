@@ -38,7 +38,7 @@ public class WeaponCharge : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && customCondition)
+        if (Input.GetMouseButtonDown(0) && customCondition && GetComponent<ChargeWeapon>().enabled)
         {
             if(lastRoutine != null)
             {
@@ -64,8 +64,10 @@ public class WeaponCharge : MonoBehaviour
         {
             canShoot = false;
         }
-     
-        chargeUI.SetCharge(currentCharge);
+        if (GetComponent<ChargeWeapon>().enabled)
+        { 
+            chargeUI.SetCharge(currentCharge);
+        } 
     }
 
     IEnumerator UseCharge()
