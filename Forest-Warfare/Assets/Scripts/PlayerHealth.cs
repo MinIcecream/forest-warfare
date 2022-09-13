@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using EZCameraShake;
 
 public class PlayerHealth : MonoBehaviour
 {
     private int health;
     public bool dead = false;
     bool invulnerable = false;
+    public GameObject hurtCanvas;
 
     public int getHealth()
     {
@@ -15,11 +17,16 @@ public class PlayerHealth : MonoBehaviour
     void Start()
     {
         health = 120;
+        hurtCanvas = GameObject.FindWithTag("HurtCanvas");
+        hurtCanvas.transform.GetChild(0).gameObject.SetActive(false);
     }
     public void DealDamage(int damage)
     {
         if(!invulnerable)
-        { 
+        {
+            hurtCanvas.transform.GetChild(0).gameObject.SetActive(true);
+            StartCoroutine(DisableHurtCanvas());
+            CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, .1f);
             GetComponent<DamageShader>().Damage();
             health -= damage; 
         } 
@@ -52,11 +59,12 @@ public class PlayerHealth : MonoBehaviour
 
                 var newWeapon=Instantiate(Resources.Load<GameObject>("Weapons/LimpWeapon"), transform.position, Quaternion.identity);
                 newWeapon.GetComponent<WeaponSprite>().SetSprite(GetComponent<SwapWeapon>().getWeapon());
-                 
+                newWeapon.transform.SetParent(this.transform);
                 Invoke("StartDeathTransition", 2f);
 
                 List<string> playerInven = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>().inventoryWeapons;
-                CheckpointManager.SetPlayerItems(playerInven[0], playerInven[1], playerInven[2]);
+                GameObject.FindWithTag("CheckpointManager").GetComponent<CheckpointManager>().SetPlayerItems(playerInven[0], playerInven[1], playerInven[2]);
+                 
             } 
         }
     }
@@ -68,5 +76,10 @@ public class PlayerHealth : MonoBehaviour
     public void SetInvulnerable(bool r)
     {
         invulnerable = r;
+    }
+    IEnumerator DisableHurtCanvas()
+    {
+        yield return new WaitForSeconds(0.2f);
+        hurtCanvas.transform.GetChild(0).gameObject.SetActive(false);
     }
 }

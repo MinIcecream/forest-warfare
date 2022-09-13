@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class BirdManager : MonoBehaviour
-{
-    GameObject player;
+public class BirdManager : EnemyManager
+{ 
     EnemyFSM birdMode = EnemyFSM.Wander;
     private Animator anim;
     public bool isAttacking;
@@ -22,8 +21,7 @@ public class BirdManager : MonoBehaviour
     public FieldOfView FOV;
 
     void Awake()
-    {
-        player = GameObject.FindWithTag("Player");
+    { 
         anim = transform.gameObject.GetComponent<Animator>();
     }
 
@@ -54,8 +52,7 @@ public class BirdManager : MonoBehaviour
     }
 
     public void Attack()
-    {
-
+    { 
         if (isAttacking == false)
         {
             isAttacking = true;
@@ -79,8 +76,10 @@ public class BirdManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
+
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
             dead = true;
@@ -128,7 +127,10 @@ public class BirdManager : MonoBehaviour
     {
         yield return new WaitForSeconds(1.6f);
         Vector2 direction = new Vector2(transform.position.x - player.transform.position.x, transform.position.y - player.transform.position.y).normalized;
-        GetComponent<BirdShoot>().Fire(direction);
+        if (!dead)
+        {
+            GetComponent<BirdShoot>().Fire(direction); 
+        } 
         yield return new WaitForSeconds(1f);
         isAttacking = false;
 

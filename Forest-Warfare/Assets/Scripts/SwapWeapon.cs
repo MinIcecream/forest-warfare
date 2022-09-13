@@ -27,6 +27,8 @@ public class SwapWeapon : MonoBehaviour
         weapons.Add(shotgun);
         weapons.Add(plasmaPistol);
         weapons.Add(masterBlade);
+
+        inventoryManager = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
     }
     public string getWeapon()
     {

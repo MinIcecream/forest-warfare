@@ -28,6 +28,8 @@ TagManager:
   - UIPanel
   - WeaponPopup
   - Flag
+  - CheckpointManager
+  - HurtCanvas
   layers:
   - Default
   - TransparentFX

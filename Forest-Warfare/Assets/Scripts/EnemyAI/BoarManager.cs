@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class BoarManager : MonoBehaviour
-{
-    GameObject player;
+public class BoarManager : EnemyManager
+{ 
     EnemyFSM boarMode = EnemyFSM.Wander;
     private Animator anim;
     public bool isAttacking;
@@ -24,8 +23,7 @@ public class BoarManager : MonoBehaviour
     public GameObject weapon;
 
     void Awake()
-    {
-        player = GameObject.FindWithTag("Player");
+    { 
         anim = transform.gameObject.GetComponent<Animator>();
     }
 
@@ -80,8 +78,9 @@ public class BoarManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update(); 
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
             weapon.SetActive(false);

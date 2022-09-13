@@ -81,6 +81,10 @@ public class InventoryManager : MonoBehaviour
 
     void GetInput()
     {
+        if (GameObject.FindWithTag("Player") == null)
+        {
+            return;
+        }
         if (GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == true || GameObject.FindWithTag("Player").GetComponent<PlayerHealth>().dead == true)
         {
             return;

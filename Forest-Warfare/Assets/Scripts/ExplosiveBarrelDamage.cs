@@ -28,8 +28,7 @@ public class ExplosiveBarrelDamage : MonoBehaviour
         {
             if (coll)
             {
-                GameObject other = coll.gameObject;
-
+                GameObject other = coll.gameObject; 
                 if (other.tag == "Player")
                 {
                     other.GetComponent<PlayerHealth>().DealDamage(50);

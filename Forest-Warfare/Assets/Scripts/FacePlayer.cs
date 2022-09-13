@@ -2,17 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyFlip : MonoBehaviour
+public class FacePlayer : MonoBehaviour
 {
     GameObject player;
-
-    void Awake()
-    {
-        player = GameObject.FindWithTag("Player");
-    }
+     
 
     void Update()
     {
+        player = GameObject.FindWithTag("Player");
         if (player)
         {
             if (transform.position.x - player.transform.position.x > 0)
@@ -23,7 +20,6 @@ public class EnemyFlip : MonoBehaviour
             {
                 transform.rotation = Quaternion.Euler(0, 180f, 0);
             }
-            
         }
     }
 }

@@ -9,10 +9,12 @@ public class Shotgun : ProjectileWeapon
     protected override void Shoot()
     {
         PlayAudio();
-        Vector2 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
-        Vector2 objPos = player.transform.position; 
-        Vector2 normalizedMousePos = (mousePos - objPos).normalized; 
+        Vector3 mousePos = (Vector3)Camera.main.ScreenToWorldPoint(new Vector3(Input.mousePosition.x, Input.mousePosition.y, 1.0f));
+        Vector3 objPos = player.transform.position; 
+        Vector3 normalizedMousePos = (spawnPt.position - objPos).normalized;
 
+        player.GetComponent<Rigidbody2D>().AddForce((objPos- spawnPt.position).normalized*20, ForceMode2D.Impulse);
+         
         int bullets = Random.Range(min, max); 
 
         for (int i = 0; i < bullets; i++)

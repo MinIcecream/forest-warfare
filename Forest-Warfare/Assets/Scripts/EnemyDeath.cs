@@ -12,6 +12,6 @@ public class EnemyDeath : MonoBehaviour
         AudioManager.Play("EnemyDeath");
         transform.Find("Canvas").gameObject.SetActive(false);
         Instantiate(particles, transform.position, Quaternion.identity);
-        Destroy(gameObject, GetComponent<AudioSource>().clip.length);
+        Destroy(gameObject, 2);
     }
 }

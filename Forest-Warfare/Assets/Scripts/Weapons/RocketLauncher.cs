@@ -21,6 +21,7 @@ public class RocketLauncher : ProjectileWeapon
 
         transform.Find("Rocket Projectile").gameObject.SetActive(false);
 
+        player.GetComponent<Rigidbody2D>().AddForce((player.transform.position - spawnPt.position).normalized * 30, ForceMode2D.Impulse);
         base.SpawnProjectile();
     }
 

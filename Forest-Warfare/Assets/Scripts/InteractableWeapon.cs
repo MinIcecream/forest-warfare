@@ -20,8 +20,7 @@ public class InteractableWeapon : MonoBehaviour
     GameObject player;
 
     void Start()
-    {
-        player = GameObject.FindWithTag("Player");
+    { 
 
         spriteRenderer.sprite = Resources.Load<Sprite>("Weapons/" + weapon);
         initialPos = transform.position;
@@ -30,6 +29,12 @@ public class InteractableWeapon : MonoBehaviour
     
     void Update()
     {
+        if (GameObject.FindWithTag("Player") == null)
+        {
+            return;
+        }
+        player = GameObject.FindWithTag("Player");
+
         inventoryManager = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
 
         if (popup.activeInHierarchy == true && Input.GetKeyDown("e"))

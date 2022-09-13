@@ -286,13 +286,13 @@ GameObject:
   - component: {fileID: 4177536685404662551}
   - component: {fileID: 4177536685404662548}
   - component: {fileID: 4177536685404662549}
-  - component: {fileID: 4177536685404662554}
   - component: {fileID: 4177536685404662555}
   - component: {fileID: 4177536685404662558}
   - component: {fileID: 4177536685404662559}
   - component: {fileID: 4177536685404662556}
   - component: {fileID: 4177536685404662544}
   - component: {fileID: 8555892926279164562}
+  - component: {fileID: 5081219704664917659}
   m_Layer: 9
   m_Name: Frog
   m_TagString: Enemy
@@ -451,18 +451,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 4177536683914726420}
   startHealth: 100
---- !u!114 &4177536685404662554
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4177536685404662626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e658e480759a009408e3ca95f31d6ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &4177536685404662555
 AudioSource:
   m_ObjectHideFlags: 0
@@ -608,6 +596,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7a3b76fd9eaa34547908d0d829c1cf32, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   frogMode: 1
   isAttacking: 0
   deathSound: {fileID: 4177536685404662555}
@@ -649,6 +638,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   damage: {fileID: 2100000, guid: aa78071378f6f4152812497ac071120a, type: 2}
+--- !u!114 &5081219704664917659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4177536685404662626}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5144e01ed64026a4eb6427c1b6bd6de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4177536685645296219
 GameObject:
   m_ObjectHideFlags: 0

@@ -16,7 +16,7 @@ public class PlayerUIDisplay : MonoBehaviour
     public Image portrait;
 
     void Update()
-    {
+    { 
         if (playerHealth)
         {
             if(health!= playerHealth.getHealth())
@@ -32,6 +32,12 @@ public class PlayerUIDisplay : MonoBehaviour
             stamina = playerStamina.getStamina();
             staminaSlider.value = stamina;
         }
+        else
+        {
+            playerHealth = GameObject.FindWithTag("Player").GetComponent<PlayerHealth>();
+            playerStamina= GameObject.FindWithTag("Player").GetComponent<PlayerStamina>();
+        }
+        
  
     }
     void ChangePortrait()

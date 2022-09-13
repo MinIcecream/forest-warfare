@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 8611309461665256577}
   - component: {fileID: 8611309461665256576}
   - component: {fileID: 8611309461665256579}
-  - component: {fileID: 8611309461665256589}
   - component: {fileID: 8611309461665256591}
   - component: {fileID: 8611309461665256590}
   - component: {fileID: 8611309461665256585}
@@ -123,6 +122,7 @@ GameObject:
   - component: {fileID: 8611309461665256580}
   - component: {fileID: 8611309461665256634}
   - component: {fileID: 930275899816771234}
+  - component: {fileID: 6445351636702194953}
   m_Layer: 9
   m_Name: Bird
   m_TagString: Enemy
@@ -253,18 +253,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 8611309461723915626}
   startHealth: 100
---- !u!114 &8611309461665256589
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8611309461665256584}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e658e480759a009408e3ca95f31d6ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!82 &8611309461665256591
 AudioSource:
   m_ObjectHideFlags: 0
@@ -401,9 +389,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e30ffe7b7a599a2438a1cae6777ad033, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   isAttacking: 0
   deathSound: {fileID: 8611309461665256591}
-  deathParticles: {fileID: 8469391669340717468, guid: 62f5aeb79fde1e149b9889104d01bc66, type: 3}
+  deathParticles: {fileID: 8334389553999427513, guid: cae23c9dc897e524dab5b8d1a56bdb37, type: 3}
   FOV: {fileID: 8611309461665256634}
 --- !u!114 &8611309461665256578
 MonoBehaviour:
@@ -469,6 +458,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   damage: {fileID: 2100000, guid: aa78071378f6f4152812497ac071120a, type: 2}
+--- !u!114 &6445351636702194953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8611309461665256584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5144e01ed64026a4eb6427c1b6bd6de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8611309461723915637
 GameObject:
   m_ObjectHideFlags: 0

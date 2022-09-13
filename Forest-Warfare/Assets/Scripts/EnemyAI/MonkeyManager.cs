@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-public class MonkeyManager : MonoBehaviour
-{
-    GameObject player;
+public class MonkeyManager : EnemyManager
+{ 
     EnemyFSM monkeyMode = EnemyFSM.Wander;
     private Animator anim;
     public bool isAttacking;
@@ -20,8 +19,7 @@ public class MonkeyManager : MonoBehaviour
     public FieldOfView FOV;
 
     void Awake()
-    {
-        player = GameObject.FindWithTag("Player");
+    { 
         anim = transform.gameObject.GetComponent<Animator>();
     }
 
@@ -73,8 +71,9 @@ public class MonkeyManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         if(GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
         {
             dead = true;

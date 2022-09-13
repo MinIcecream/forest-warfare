@@ -195,13 +195,13 @@ GameObject:
   - component: {fileID: 6319023503847571861}
   - component: {fileID: 6319023503847571859}
   - component: {fileID: 6319023503847571858}
-  - component: {fileID: 6319023503847571857}
   - component: {fileID: 6319023503847571856}
   - component: {fileID: 6319023503847571823}
   - component: {fileID: 6319023503847571822}
   - component: {fileID: 6319023503847571821}
   - component: {fileID: 6319023503847571819}
   - component: {fileID: 5560960408139780646}
+  - component: {fileID: 2412582212206975333}
   m_Layer: 9
   m_Name: Dummy
   m_TagString: Enemy
@@ -371,23 +371,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6d905847843053e408046b71d074aa6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   isAttacking: 0
   deathSound: {fileID: 6319023503847571823}
   deathParticles: {fileID: 8469391669340717468, guid: 62f5aeb79fde1e149b9889104d01bc66, type: 3}
   FOV: {fileID: 6319023503847571819}
   weapon: {fileID: 6319023504830566516}
---- !u!114 &6319023503847571857
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6319023503847571865}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e658e480759a009408e3ca95f31d6ebe, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &6319023503847571856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -560,6 +549,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   damage: {fileID: 2100000, guid: aa78071378f6f4152812497ac071120a, type: 2}
+--- !u!114 &2412582212206975333
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6319023503847571865}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5144e01ed64026a4eb6427c1b6bd6de3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6319023503896528030
 GameObject:
   m_ObjectHideFlags: 0

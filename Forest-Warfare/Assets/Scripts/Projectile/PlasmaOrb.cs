@@ -9,11 +9,17 @@ public class PlasmaOrb : MonoBehaviour
     Rigidbody2D rb;
     string state = "up";
 
+    public float checkRadius;
+    public LayerMask layers;
     public Transform pt;
-     
+
+    public List<Collider2D> results;
+
     float size = 0.5f;
 
     bool following=false;
+
+    public GameObject field;
 
     public void Follow(Transform t)
     {
@@ -66,17 +72,15 @@ public class PlasmaOrb : MonoBehaviour
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (!following)
-        { 
-            Instantiate(Resources.Load<GameObject>("Weapons/PlasmaOrbParticles"), transform.position, Quaternion.identity);
-            Destroy(gameObject);
+        {
+            DestroyOrb();
         } 
     }
     void OnTriggerStay2D(Collider2D coll)
     {
         if (!following)
         {
-            Instantiate(Resources.Load<GameObject>("Weapons/PlasmaOrbParticles"), transform.position, Quaternion.identity);
-            Destroy(gameObject);
+            DestroyOrb();
         }
     }
     IEnumerator SwitchState()
@@ -94,4 +98,40 @@ public class PlasmaOrb : MonoBehaviour
             }
         }
     }  
+    void DestroyOrb()
+    { 
+        if (size >= 1)
+        {
+            GetComponent<SpriteRenderer>().enabled = false;
+            GetComponent<Collider2D>().enabled = false;
+            GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Static;
+
+            Instantiate(Resources.Load<GameObject>("Weapons/PlasmaOrbParticles"), transform.position, Quaternion.identity);
+            field.SetActive(true);
+
+            Collider2D[] results=(Physics2D.OverlapCircleAll(transform.position, checkRadius, layers));
+            Invoke("Disable", 1f);
+
+            foreach (Collider2D yo in results)
+            { 
+                yo.gameObject.GetComponent<Rigidbody2D>().AddForce((transform.position - yo.transform.position) * 100f);
+                if (yo.gameObject.GetComponent<EnemyHealth>() != null)
+                {
+                    yo.gameObject.GetComponent<EnemyHealth>().DealDamage(20);
+                }
+            }
+        }
+        else
+        {
+
+            Instantiate(Resources.Load<GameObject>("Weapons/PlasmaOrbParticles"), transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
+    }
+
+    void Disable()
+    {  
+        Destroy(gameObject); 
+    }
+
 }

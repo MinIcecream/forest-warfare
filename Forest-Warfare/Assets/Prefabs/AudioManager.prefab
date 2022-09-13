@@ -76,7 +76,7 @@ MonoBehaviour:
   - name: Minigun
     clip: {fileID: 8300000, guid: 82251f2b76e513f45bdc0d5c501b7180, type: 3}
     isMusic: 0
-    isLoop: 1
+    isLoop: 0
     volume: 0.65
     pitch: 1
     source: {fileID: 0}

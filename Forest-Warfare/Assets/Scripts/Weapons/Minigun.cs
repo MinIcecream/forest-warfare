@@ -10,34 +10,53 @@ public class Minigun : ProjectileWeapon
 
     public float startDelay;
 
+    bool onCooldown = false;
+
     public override void ContinuouslyFiring()
     { 
-        if (!shooting)
+        if (!shooting && !onCooldown)
         {
-            PlayAudio();
+            onCooldown = true;
+            StartCoroutine(shootCooldown());
             shooting = true;
             StartCoroutine(shoot());
         }
     }
     public override void NotContinuouslyFiring()
-    { 
-        StopAudio();
+    {  
+        shooting = false;
+    }
+    public override void OnDisable()
+    {
+        base.OnDisable();
         shooting = false;
     }
 
     IEnumerator shoot()
     {
+        float tempDelay = startDelay;
+        float speed = 0.01f;
+
         while (shooting)
-        { 
+        {  
             rotate.Shake(-5,5);
 
+            PlayAudio();
             SpawnProjectile();
 
-            if (startDelay > fireDelay)
-            {
-                startDelay -= 0.01f;
+            player.GetComponent<Rigidbody2D>().AddForce((player.transform.position-spawnPt.position).normalized * 120); 
+             
+            if (tempDelay > fireDelay)
+            { 
+                tempDelay -= speed;
+                speed = Mathf.Pow(speed, 0.8f) * 0.6f;
             }
-            yield return new WaitForSeconds(startDelay);
+            yield return new WaitForSeconds(tempDelay);
         }
-    } 
+    }
+    IEnumerator shootCooldown()
+    {
+        yield return new WaitForSeconds(0.4f);
+        onCooldown = false;
+    }
 }

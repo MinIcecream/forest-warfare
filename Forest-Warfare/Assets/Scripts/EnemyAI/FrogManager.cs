@@ -3,9 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class FrogManager : MonoBehaviour
-{
-    GameObject player;
+public class FrogManager : EnemyManager
+{ 
 
     [SerializeField]
     EnemyFSM frogMode = EnemyFSM.Wander;
@@ -29,8 +28,7 @@ public class FrogManager : MonoBehaviour
     public Transform feet;
 
     void Awake()
-    {
-        player = GameObject.FindWithTag("Player");
+    { 
         anim = transform.gameObject.GetComponent<Animator>();
     }
 
@@ -90,8 +88,9 @@ public class FrogManager : MonoBehaviour
         }
     }
 
-    public void Update()
+    public override void Update()
     {
+        base.Update();
         grounded = Physics2D.OverlapCircle(feet.position, checkRadius, whatIsGround);
         anim.SetBool("grounded", grounded);
         if (GetComponent<EnemyHealth>().getHealth() <= 0 && !dead)
