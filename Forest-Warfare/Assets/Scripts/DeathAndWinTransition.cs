@@ -32,7 +32,6 @@ public class DeathAndWinTransition : MonoBehaviour
     }
     public void RestartLevel()
     {
-        GameObject.FindWithTag("CheckpointManager").GetComponent<CheckpointManager>().LoadLastCheckpoint();
-        EndTransition();
+        CheckpointManager.LoadLastCheckpoint();
     }
 }

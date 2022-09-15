@@ -11,11 +11,11 @@ GameObject:
   - component: {fileID: 5733383967686486962}
   - component: {fileID: 1168220607437087346}
   - component: {fileID: 3625561790528350782}
-  - component: {fileID: 7632692049682099207}
   - component: {fileID: 824299332388691626}
   - component: {fileID: 1214356406812531583}
   - component: {fileID: 6539281328259506052}
   - component: {fileID: 7942187126058428010}
+  - component: {fileID: -8792160089651081417}
   m_Layer: 11
   m_Name: SniperBullet
   m_TagString: Player Weapon
@@ -106,22 +106,6 @@ CircleCollider2D:
   m_Offset: {x: -0.022490025, y: 0.028110147}
   serializedVersion: 2
   m_Radius: 0.9833741
---- !u!114 &7632692049682099207
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8695706238655065402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 964d795524b414045abab7de255e4e85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  rb: {fileID: 7942187126058428010}
-  magnitude: 0
-  piercing: 1
-  dir: {x: 0, y: 0, z: 0}
 --- !u!114 &824299332388691626
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -278,3 +262,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &-8792160089651081417
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8695706238655065402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 66a79393ede3aa94ebf23c9ac51399f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rb: {fileID: 7942187126058428010}
+  magnitude: 0
+  dir: {x: 0, y: 0, z: 0}
+  enemiesHit: 0

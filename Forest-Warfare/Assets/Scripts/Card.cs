@@ -14,35 +14,8 @@ public class Card : MonoBehaviour
     public bool unlocked=false;
 
     public void SetCard(Weapon weapon)
-    { 
-        weaponName = weapon.name;
-        frontImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("Weapons/" + weapon.name);
-        frontImage.GetComponent<Image>().preserveAspect = true;
-
-        frontImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0,-73);
-        frontText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 45.4f);
-        StartCoroutine(SetSize()); 
-
-        frontText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
-         
-        if (PlayerPrefs.GetInt(weaponName, 0) == 1)
-        {
-            unlocked = true;
-        }
-        if (!unlocked)
-        {
-            frontImage.GetComponent<Image>().color = new Color32(0,0,0,255);
-            frontText.GetComponent<TextMeshProUGUI>().text = "???";
-        }
-        else
-        { 
-            frontText.GetComponent<TextMeshProUGUI>().text = weapon.displayName;
-        }
-
-        if (backText)
-        { 
-            backText.GetComponent<TextMeshProUGUI>().text = weapon.description; 
-        }
+    {
+        StartCoroutine(Delay(weapon));
     } 
     public void FlipToBack()
     { 
@@ -64,5 +37,42 @@ public class Card : MonoBehaviour
     public void SelectWeapon()
     {
         transform.parent.GetComponent<WellSelectWeapon>().SelectWeapon(weaponName);
+    }
+    IEnumerator Delay(Weapon weapon)
+    {
+        yield return null;
+        weaponName = weapon.name;
+        frontImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("Weapons/" + weapon.name);
+        frontImage.GetComponent<Image>().preserveAspect = true;
+
+        float cardHeight = GetComponent<RectTransform>().rect.height;
+        float cardWidth = GetComponent<RectTransform>().rect.width;
+
+        float realHeight = cardWidth * 0.625f;
+
+        float yPadding = (cardHeight - realHeight) / 2; 
+        frontImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 5);
+        frontText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, yPadding); 
+
+        frontText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
+
+        if (PlayerPrefs.GetInt(weaponName, 0) == 1)
+        {
+            unlocked = true;
+        }
+        if (!unlocked)
+        {
+            frontImage.GetComponent<Image>().color = new Color32(0, 0, 0, 255);
+            frontText.GetComponent<TextMeshProUGUI>().text = "???";
+        }
+        else
+        {
+            frontText.GetComponent<TextMeshProUGUI>().text = weapon.displayName;
+        }
+
+        if (backText)
+        {
+            backText.GetComponent<TextMeshProUGUI>().text = weapon.description;
+        }
     }
 }

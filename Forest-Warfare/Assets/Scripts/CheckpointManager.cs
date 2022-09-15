@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 
 public class CheckpointManager : MonoBehaviour
 { 
@@ -11,36 +13,54 @@ public class CheckpointManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject player;
     public Vector2 origin;
+
+    public GameObject recentCheckpoint;
+
+    public static CheckpointManager instance;
+    /*
     [System.Serializable]
     public struct enemy
     {
         public Vector2 pos;
         public GameObject obj;
     } 
-    public List<enemy> enemies = new List<enemy>();
+    public List<enemy> enemies = new List<enemy>(); */
 
     void Awake()
     {
+        if (instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        DontDestroyOnLoad(gameObject);
+
+        /*
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemy newEnemy=new enemy();
             newEnemy.pos = e.transform.position;
             newEnemy.obj = e;
             enemies.Add(newEnemy);
-        }
+        }*/
     }
-    public Vector2 GetMostRecentCheckpoint()
+    public GameObject GetMostRecentCheckpoint()
     { 
         for (int i = flags.Count - 1; i >= 0; i--)
         { 
             if (flags[i].checkpointReached)
             {
                 RestorePlayerInventory();
-                return flags[i].gameObject.transform.position;
+                return flags[i].gameObject;
             }
         }
-        return Vector2.zero;
-    }
+        return null;
+    } 
 
     public void SetPlayerItems(string one, string two, string three)
     {
@@ -61,11 +81,14 @@ public class CheckpointManager : MonoBehaviour
             inven.SetInventorySlotWeapon(GetPlayerItem(i), i);
         }
     }  
-    public void LoadLastCheckpoint()
-    {
+    public static void LoadLastCheckpoint()
+    { 
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //spawn new enemies,
         //spawn new player
-        foreach(enemy e in enemies)
+
+        /*
+        foreach (enemy e in instance.enemies)
         { 
             if(e.obj!=null)
             {
@@ -74,28 +97,35 @@ public class CheckpointManager : MonoBehaviour
                 Destroy(e.obj);
             }  
         }
-        enemies.Clear();
+        instance.enemies.Clear();
 
         foreach (GameObject e in GameObject.FindGameObjectsWithTag("Enemy"))
         {
             enemy newEnemy = new enemy();
             newEnemy.pos = e.transform.position;
             newEnemy.obj = e;
-            enemies.Add(newEnemy);
+            instance.enemies.Add(newEnemy);
         }
+        */
+        instance.StartCoroutine(instance.LoadSceneDelay());
+         
+    }
+    IEnumerator LoadSceneDelay()
+    {
+        yield return null;
+        instance.player = GameObject.FindWithTag("Player");
 
-        Destroy(player);
-        player = Instantiate(playerPrefab, transform.position, Quaternion.identity);
-        
-        Vector2 checkPt = GetMostRecentCheckpoint();
+        instance.recentCheckpoint = instance.GetMostRecentCheckpoint();
 
-        if (checkPt != Vector2.zero)
+        if (instance.recentCheckpoint != null)
         {
-            player.transform.position = new Vector2(checkPt.x, checkPt.y + 3);
+            Vector2 checkPt = instance.recentCheckpoint.transform.position;
+            instance.player.transform.position = new Vector2(checkPt.x, checkPt.y + 3);
+            instance.recentCheckpoint.transform.GetChild(0).gameObject.SetActive(true);
         }
         else
         {
-            player.transform.position = origin;
+            instance.player.transform.position = instance.origin; 
         }
     }
 }

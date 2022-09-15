@@ -7,7 +7,10 @@ public class UIManager : MonoBehaviour
     public PauseManager pauseMan;
     public WellSelectWeapon wellScript;
     public GameObject compendiumObj;
-
+    void Awake()
+    {
+        pauseMan = GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>();
+    }
     void Update()
     {
         //Close newest panel

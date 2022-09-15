@@ -25,7 +25,6 @@ public class PauseManager : MonoBehaviour
         }
 
         Time.timeScale = 1;
-        DontDestroyOnLoad(gameObject);
     }
 
     public void Pause()
@@ -34,7 +33,7 @@ public class PauseManager : MonoBehaviour
         { 
             GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
             GameObject.FindWithTag("Player").GetComponent<SwapWeapon>().enabled = false;
-            panel.SetActive(true);
+            gameObject.transform.GetChild(0).gameObject.SetActive(true);
             Time.timeScale = 0;
             paused = true; 
         } 
@@ -64,5 +63,10 @@ public class PauseManager : MonoBehaviour
     public static bool IsPaused()
     {
         return instance.paused;
+    }
+
+    void OnDisable()
+    { 
+        panel.SetActive(false); 
     }
 }

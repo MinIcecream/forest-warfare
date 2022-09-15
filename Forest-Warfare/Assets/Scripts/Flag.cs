@@ -19,11 +19,19 @@ public class Flag : MonoBehaviour
         { 
             anim.SetTrigger("Raise");
               
-            checkpointReached = true; 
+            checkpointReached = true;
+            StartCoroutine(SetShine());
         } 
     }  
     public void SetRaised()
     {
         GetComponent<SpriteRenderer>().sprite = raisedSprite; 
     }
+    IEnumerator SetShine()
+    {
+        yield return new WaitForSeconds(.92f);
+        GetComponent<SpriteRenderer>().material = shine;
+        yield return new WaitForSeconds(0.2f); 
+        GetComponent<SpriteRenderer>().material = normal;
+    } 
 }

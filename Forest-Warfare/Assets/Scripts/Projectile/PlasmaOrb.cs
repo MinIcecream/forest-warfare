@@ -110,7 +110,7 @@ public class PlasmaOrb : MonoBehaviour
             field.SetActive(true);
 
             Collider2D[] results=(Physics2D.OverlapCircleAll(transform.position, checkRadius, layers));
-            Invoke("Disable", 1f);
+            Invoke("Disable", 0.5f);
 
             foreach (Collider2D yo in results)
             { 
