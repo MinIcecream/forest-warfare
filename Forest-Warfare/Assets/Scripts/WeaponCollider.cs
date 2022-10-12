@@ -14,7 +14,14 @@ public class WeaponCollider : MonoBehaviour
             if (coll.gameObject.tag == "Enemy")
             {
                 AudioManager.Play("MeleeHit");
-                coll.gameObject.GetComponent<EnemyHealth>().DealDamage(damage); 
+                if (coll.gameObject.GetComponent<EnemyHealth>() != null)
+                { 
+                    coll.gameObject.GetComponent<EnemyHealth>().DealDamage(damage);
+                } 
+            }
+            else if(coll.gameObject.tag == "Terrain")
+            { 
+                AudioManager.Play("MeleeHit");
             }
             else if (coll.gameObject.tag == "Interactable Terrain")
             {

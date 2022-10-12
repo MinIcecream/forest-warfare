@@ -10,7 +10,10 @@ public class Knockback : MonoBehaviour
     {
         if (coll.gameObject.tag == "Enemy")
         {
-            coll.gameObject.GetComponent<Rigidbody2D>().AddForce((coll.gameObject.transform.position- transform.position).normalized * knockbackFactor);
+            if (coll.gameObject.GetComponent<Rigidbody2D>() != null)
+            { 
+                coll.gameObject.GetComponent<Rigidbody2D>().AddForce((coll.gameObject.transform.position - transform.position).normalized * knockbackFactor);
+            } 
         }
         else if (coll.gameObject.tag == "Interactable Terrain")
         {

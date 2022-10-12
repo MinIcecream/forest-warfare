@@ -56,11 +56,11 @@ public class Bonecrusher : MeleeWeapon
         {
             if (facingLeft&&angle>90)
             {
-                angle -= 25 * Time.deltaTime;
+                angle -= 35 * Time.deltaTime;
             }
             else if (!facingLeft && angle < 90)
             {
-                angle += 25 * Time.deltaTime;
+                angle += 35 * Time.deltaTime;
             }
             transform.parent.transform.localEulerAngles = new Vector3(0, 0, angle); 
         }
@@ -116,7 +116,11 @@ public class Bonecrusher : MeleeWeapon
         CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, .1f);
         GetComponent<SpriteRenderer>().sprite = normalSprite;
 
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.2f);
+
+        useSwingDamage = false;
+
+        yield return new WaitForSeconds(0.8f);
 
         charging = false;
         transform.parent.gameObject.GetComponent<PlayerLook>().enabled = true;

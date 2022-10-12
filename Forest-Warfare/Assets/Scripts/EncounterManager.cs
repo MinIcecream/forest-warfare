@@ -32,6 +32,9 @@ public class EncounterManager : MonoBehaviour
     public Image contArrow;
 
     List<GameObject> currentWaveEnemies=new List<GameObject>();
+
+    public bool right = true;
+
     void OnTriggerEnter2D(Collider2D other)
     {
         if(!encounterStarted)
@@ -63,9 +66,18 @@ public class EncounterManager : MonoBehaviour
 
     void StartEndEncounter()
     {
-        rightBarrier.GetComponent<EncounterBarrier>().SetEndEncounterBarrier(this);
+        if (right)
+        { 
+            rightBarrier.GetComponent<EncounterBarrier>().SetEndEncounterBarrier(this);
 
-        leftBarrier.SetActive(false);
+            leftBarrier.SetActive(false);
+        }
+        else
+        { 
+            leftBarrier.GetComponent<EncounterBarrier>().SetEndEncounterBarrier(this);
+
+            rightBarrier.SetActive(false);
+        }
         contArrow.gameObject.SetActive(true); 
     }
 

@@ -39,6 +39,10 @@ public class InteractableWeapon : MonoBehaviour
 
         if (popup.activeInHierarchy == true && Input.GetKeyDown("e"))
         {
+            if (inventoryManager.inventoryWeapons.Contains(weapon))
+            {
+                return;
+            }
             if(inventoryManager.inventoryWeapons[inventoryManager.activeSlot - 1]==null)
             {
                 SetSprite("");

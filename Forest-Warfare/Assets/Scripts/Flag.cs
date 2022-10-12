@@ -12,26 +12,38 @@ public class Flag : MonoBehaviour
     public Sprite raisedSprite;
 
     public bool checkpointReached = false;
-     
+
+    public bool shineLight = false;
+    public bool alreadyShined = false;
+
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (!checkpointReached)
         { 
             anim.SetTrigger("Raise");
               
-            checkpointReached = true;
-            StartCoroutine(SetShine());
+            checkpointReached = true; 
         } 
     }  
     public void SetRaised()
     {
         GetComponent<SpriteRenderer>().sprite = raisedSprite; 
-    }
-    IEnumerator SetShine()
-    {
-        yield return new WaitForSeconds(.92f);
-        GetComponent<SpriteRenderer>().material = shine;
-        yield return new WaitForSeconds(0.2f); 
-        GetComponent<SpriteRenderer>().material = normal;
     } 
+    void Update()
+    {
+        if (shineLight&&!alreadyShined)
+        { 
+            GetComponent<SpriteRenderer>().material = shine;
+            StartCoroutine(UnShine());
+        }
+        else
+        { 
+            GetComponent<SpriteRenderer>().material = normal;
+        }
+    }
+    IEnumerator UnShine()
+    {
+        yield return new WaitForSeconds(0.2f);
+        alreadyShined = true;
+    }
 }

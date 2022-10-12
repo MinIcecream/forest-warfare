@@ -73,6 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32151e6ef44c8c4b9e04bd4306c2b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damage: 20
 --- !u!198 &1767000897454495710
 ParticleSystem:
   m_ObjectHideFlags: 0
@@ -5062,6 +5063,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 2909126100672697944}
   startHealth: 100
+  indicate: 1
+  invulnerable: 0
 --- !u!114 &2909126098852306220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5248,7 +5251,7 @@ MonoBehaviour:
     m_Bits: 256
   obstacleMask:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 540672
   visibleTargets: []
 --- !u!114 &9098537921887505487
 MonoBehaviour:

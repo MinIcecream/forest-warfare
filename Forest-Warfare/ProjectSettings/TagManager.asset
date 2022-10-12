@@ -53,7 +53,7 @@ TagManager:
   - OnlyPlayerAndEnemy
   - glow
   - Platform
-  - 
+  - OnlyWithProjectiles
   - 
   - 
   - 

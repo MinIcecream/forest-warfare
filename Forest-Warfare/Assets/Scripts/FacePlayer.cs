@@ -5,11 +5,11 @@ using UnityEngine;
 public class FacePlayer : MonoBehaviour
 {
     GameObject player;
-     
 
     void Update()
     {
         player = GameObject.FindWithTag("Player");
+
         if (player)
         {
             if (transform.position.x - player.transform.position.x > 0)

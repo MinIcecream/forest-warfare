@@ -29,7 +29,7 @@ public class SniperProjectile : Projectile
         }
         else
         { 
-            GetComponent<WeaponCollider>().damage = GetComponent<WeaponCollider>().damage - 15 * enemiesHit;
+            GetComponent<WeaponCollider>().damage = GetComponent<WeaponCollider>().damage - 30 * enemiesHit;
             enemiesHit++;
         }
     }
