@@ -18,7 +18,11 @@ public class Card : MonoBehaviour
         StartCoroutine(Delay(weapon));
     } 
     public void FlipToBack()
-    { 
+    {
+        if (PlayerPrefs.GetInt(weaponName, 0) == 0)
+        {
+            return;
+        }
         front.SetActive(false);
         back.SetActive(true);
     }
@@ -27,12 +31,11 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
     }
-    IEnumerator SetSize()
-    {
-        yield return new WaitForSecondsRealtime(0.1f);
-        float parentHeight = GetComponent<RectTransform>().rect.height * .3f;
-        float parentWidth = GetComponent<RectTransform>().rect.width*.8f; 
-        frontImage.GetComponent<RectTransform>().sizeDelta = new Vector2(parentWidth, parentHeight);
+    void SetSize()
+    { 
+        float parentHeight = GetComponent<RectTransform>().rect.height;
+        float parentWidth = GetComponent<RectTransform>().rect.width; 
+        frontImage.GetComponent<RectTransform>().sizeDelta = new Vector2(200, 150);
     }
     public void SelectWeapon()
     {
@@ -42,7 +45,7 @@ public class Card : MonoBehaviour
     {
         yield return null;
         weaponName = weapon.name;
-        frontImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("Weapons/" + weapon.name);
+        frontImage.GetComponent<Image>().sprite = Resources.Load<Sprite>("WeaponPortraits/" + weapon.name);
         frontImage.GetComponent<Image>().preserveAspect = true;
 
         float cardHeight = GetComponent<RectTransform>().rect.height;
@@ -51,7 +54,7 @@ public class Card : MonoBehaviour
         float realHeight = cardWidth * 0.625f;
 
         float yPadding = (cardHeight - realHeight) / 2; 
-        frontImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, 5);
+        frontImage.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, (18f/200*.6f)* cardHeight);
         frontText.GetComponent<RectTransform>().anchoredPosition = new Vector2(0, yPadding); 
 
         frontText.GetComponent<RectTransform>().SetSizeWithCurrentAnchors(RectTransform.Axis.Vertical, 50);
@@ -74,5 +77,6 @@ public class Card : MonoBehaviour
         {
             backText.GetComponent<TextMeshProUGUI>().text = weapon.description;
         }
+        SetSize();
     }
 }

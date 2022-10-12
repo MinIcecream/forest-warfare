@@ -10,12 +10,28 @@ public class WellSelectWeapon : MonoBehaviour
     public Vector2 well;
     public TextMeshProUGUI button;
 
+    public WeaponList weapons;
+
     public GameObject panel;
 
+    void Awake()
+    {
+        weapons = GameObject.FindWithTag("WeaponList").GetComponent<WeaponList>();
+    }
     public void SelectWeapon(string w)
     {
-        selectedWeapon = w;
-        button.text = w;
+        if (PlayerPrefs.GetInt(w, 0) == 0)
+        {
+            return;
+        }
+        selectedWeapon = w; 
+        foreach (Weapon weapon in weapons.weaponList)
+        {
+            if (weapon.name == w)
+            {
+                button.text = weapon.displayName;
+            }
+        }
     }
     public void SpawnWeapon()
     {

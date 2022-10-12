@@ -35,7 +35,10 @@ public class ExplosiveBarrelDamage : MonoBehaviour
                 }
                 else if (other.tag == "Enemy")
                 {
-                    other.GetComponent<EnemyHealth>().DealDamage(100);
+                    if (other.GetComponent<EnemyHealth>() != null)
+                    { 
+                        other.GetComponent<EnemyHealth>().DealDamage(100);
+                    } 
                 }
                 else if (other.tag == "Interactable Terrain")
                 {

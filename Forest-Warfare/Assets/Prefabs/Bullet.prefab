@@ -135,7 +135,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 1
-  damage: 20
+  damage: 25
 --- !u!114 &1214356406812531583
 MonoBehaviour:
   m_ObjectHideFlags: 0

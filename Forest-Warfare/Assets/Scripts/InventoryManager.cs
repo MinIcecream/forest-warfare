@@ -40,6 +40,10 @@ public class InventoryManager : MonoBehaviour
 
     public void SwapItem(string weapon)
     {
+        if (inventoryWeapons.Contains(weapon))
+        {
+            return;
+        }
         if (activeSlot <= 1)
         {
             inventoryWeapons[0] = weapon;

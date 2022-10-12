@@ -10,6 +10,23 @@ public class EnemyHealth : MonoBehaviour
 
     public int startHealth;
 
+    public bool indicate = true;
+
+    public bool invulnerable = false;
+
+    public void SetInvulnerable()
+    {
+        invulnerable = true;
+    }
+    public void SetVulnerable()
+    {
+        invulnerable = false;
+    }
+    public void DisableIndicator()
+    {
+        indicate = false; 
+    }
+
     public int getHealth()
     {
         return health;
@@ -24,7 +41,14 @@ public class EnemyHealth : MonoBehaviour
     }
     public void DealDamage(int damage)
     {
-        GetComponent<DamageShader>().Damage();
+        if (invulnerable)
+        {
+            return;
+        }
+        if (indicate)
+        {
+            GetComponent<DamageShader>().Damage();
+        } 
         health -= damage;
         healthBar.SetHealth(health);
     }

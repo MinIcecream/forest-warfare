@@ -4,15 +4,17 @@ using UnityEngine;
 
 public class EnemyWeapon : MonoBehaviour
 {
+    public int damage = 20;
+
     bool canDamage=true;
 
     void OnTriggerEnter2D(Collider2D coll)
     {
         if (coll.gameObject.tag == "Player" &&canDamage)
-        {
+        { 
             canDamage = false;
             StartCoroutine(DamageCooldown());
-            coll.gameObject.GetComponent<PlayerHealth>().DealDamage(20);
+            coll.gameObject.GetComponent<PlayerHealth>().DealDamage(damage);
         }
         else if (coll.gameObject.tag == "Interactable Terrain")
         {
