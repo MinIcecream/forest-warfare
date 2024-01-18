@@ -10,8 +10,17 @@ public class LevelManager : MonoBehaviour
  
     // Start is called before the first frame update
     void Start()
-    {
-
+    { 
         AudioManager.Play("Music");
+    }
+    public static void SwitchToBossMusic()
+    {
+        AudioManager.SetVolume("Music", 0f);
+        AudioManager.Play("BossMusic");
+    }
+    public static void SwitchToMusic()
+    { 
+        AudioManager.SetVolume("Music", 0.22f);
+        AudioManager.Stop("BossMusic");
     }
 }

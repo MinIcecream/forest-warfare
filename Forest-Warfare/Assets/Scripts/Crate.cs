@@ -14,9 +14,11 @@ public class Crate : MonoBehaviour
     private List<Weapon> availableWeapons = new List<Weapon>();
 
     private Weapon weaponToSpawn;
+    public InventoryManager inven;
 
     void Awake()
     {
+        inven = GameObject.FindWithTag("Inventory").GetComponent<InventoryManager>();
         weaponList=GameObject.FindWithTag("WeaponList").GetComponent<WeaponList>();
     }
 
@@ -80,6 +82,12 @@ public class Crate : MonoBehaviour
         {
             int randomNum = Random.Range(1, availableWeapons.Count);
             weaponToSpawn = availableWeapons[randomNum];
+
+            while (inven.inventoryWeapons.Contains(weaponToSpawn.name))
+            {
+                randomNum = Random.Range(1, availableWeapons.Count);
+                weaponToSpawn = availableWeapons[randomNum];
+            } 
         }
         else
         {

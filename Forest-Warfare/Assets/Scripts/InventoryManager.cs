@@ -88,13 +88,13 @@ public class InventoryManager : MonoBehaviour
         if (GameObject.FindWithTag("Player") == null)
         {
             return;
-        }
-        if (GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused == true || GameObject.FindWithTag("Player").GetComponent<PlayerHealth>().dead == true)
+        } 
+        if (GameObject.FindWithTag("PauseManager").GetComponent<PauseManager>().paused || GameObject.FindWithTag("Player").GetComponent<PlayerHealth>().dead == true)
         {
             return;
         }
         if (Input.GetKeyDown("1"))
-        {
+        {  
             UnselectAll();
             activeSlot = 1;
             weaponSlots[0].GetComponent<InventorySlot>().Select();

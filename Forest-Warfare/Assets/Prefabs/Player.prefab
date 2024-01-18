@@ -140,7 +140,7 @@ ParticleSystem:
   startDelay:
     serializedVersion: 2
     minMaxState: 0
-    scalar: 0
+    scalar: 0.4
     minScalar: 0
     maxCurve:
       serializedVersion: 2
@@ -6070,6 +6070,7 @@ MonoBehaviour:
   isAuto: 1
   rotate: {fileID: 9004313086524382481}
   shooting: 0
+  startDelay: 0
 --- !u!1 &9004313087014161920
 GameObject:
   m_ObjectHideFlags: 0
@@ -12280,6 +12281,7 @@ MonoBehaviour:
   outlineMat: {fileID: 2100000, guid: f6665daca9833b9469a8bc228fb4a800, type: 2}
   normal: {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   parent: {fileID: 9004313088191074731}
+  hitEnemies: []
   slice: {fileID: 8727548786682003793, guid: bdb4f17093e162849b79e8f757135060, type: 3}
   dashDust: {fileID: 4022550626580087265, guid: e934152c32943754fa4b73fd25ccf6ce, type: 3}
   sprite: {fileID: 9004313086667567573}
@@ -12533,7 +12535,6 @@ MonoBehaviour:
   canMove: 1
   slamColl: {fileID: 0}
   staminaCost: 50
-  platform: {fileID: 0}
 --- !u!114 &9004313088191074722
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12573,6 +12574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dead: 0
+  hurtCanvas: {fileID: 0}
 --- !u!212 &9004313088191074735
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -12758,7 +12760,7 @@ GameObject:
   - component: {fileID: 9004313088215142832}
   m_Layer: 8
   m_Name: Bonecrusher Parent
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

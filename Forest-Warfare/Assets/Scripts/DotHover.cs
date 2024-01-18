@@ -16,12 +16,12 @@ public class DotHover : MonoBehaviour
 
     void Awake()
     {
-        if (PlayerPrefs.GetInt("CompletedLevels", 5) >= level)
+        if (PlayerPrefs.GetInt("CompletedLevels", 0) >= level)
         {
             currentState = state.Completed;
             GetComponent<SpriteRenderer>().color = new Color(0f, 1f, 0f, 1f);
         }
-        else if (PlayerPrefs.GetInt("CompletedLevels", 5) == level - 1)
+        else if (PlayerPrefs.GetInt("CompletedLevels", 0) == level - 1)
         {
             currentState = state.Unlocked;
         }
@@ -44,7 +44,14 @@ public class DotHover : MonoBehaviour
     {
         if (currentState != state.Locked)
         {
-            GameObject.FindWithTag("TransitionCanvas").GetComponent<Transition>().StartTransition(level.ToString());
+            if (Application.CanStreamedLevelBeLoaded(level.ToString()))
+            { 
+                GameObject.FindWithTag("TransitionCanvas").GetComponent<Transition>().StartTransition(level.ToString());
+            }
+            else
+            {
+                GameObject.FindWithTag("UIText").GetComponent<TextFade>().SetOpaque();
+            }
         } 
     }
 }

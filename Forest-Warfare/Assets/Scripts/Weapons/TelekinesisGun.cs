@@ -13,7 +13,7 @@ public class TelekinesisGun : ChargeWeapon
 
     bool objChosen = false;
      
-    void Update()
+    new void Update()
     {
         base.Update();
         var ray = Camera.main.ScreenPointToRay(Input.mousePosition);

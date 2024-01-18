@@ -42,7 +42,8 @@ public class RobotManager : EnemyManager
     public Material normal;
 
     void Awake()
-    { 
+    {
+        LevelManager.SwitchToBossMusic();
         anim = transform.gameObject.GetComponent<Animator>();
     }
 
@@ -94,7 +95,7 @@ public class RobotManager : EnemyManager
         if (!onCooldown)
         {
             onCooldown = true;
-            Invoke("CooldownTimer", 3f);
+            Invoke("CooldownTimer", 2f);
         } 
     }
     public void Explode()
@@ -324,13 +325,20 @@ public class RobotManager : EnemyManager
 
             yield return new WaitForSeconds(0.01f);
         }
+        AudioManager.Play("RobotExplosion");
         yield return new WaitForSeconds(1f);
         var newRobot=Instantiate(Resources.Load<GameObject>("DestroyedRobot"), transform.position, Quaternion.identity);
          
         if(transform.localRotation.eulerAngles.y == 0)
         { 
             newRobot.transform.rotation = Quaternion.Euler(0, 180, 0);
-        } 
+        }
+
+        LevelManager.SwitchToMusic();
         Destroy(gameObject);
+    }
+    void OnDestroy()
+    {
+        LevelManager.SwitchToMusic();
     }
 }

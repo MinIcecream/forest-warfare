@@ -24,6 +24,7 @@ public class PlayerHealth : MonoBehaviour
     {
         if(!invulnerable)
         {
+            AudioManager.Play("PlayerHurt");
             hurtCanvas.transform.GetChild(0).gameObject.SetActive(true);
             StartCoroutine(DisableHurtCanvas());
             CameraShaker.Instance.ShakeOnce(4f, 4f, .1f, .1f);

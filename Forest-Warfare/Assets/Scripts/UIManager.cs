@@ -19,8 +19,7 @@ public class UIManager : MonoBehaviour
             GameObject[] panels = GameObject.FindGameObjectsWithTag("UIPanel");
 
             if (panels.Length > 0)
-            {
-
+            { 
                 int highestPrio = 0;
                 GameObject highestPrioPanel = null;
 

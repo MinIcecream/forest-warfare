@@ -128,6 +128,10 @@ public class FrogManager : EnemyManager
                     {
                         frogMode = EnemyFSM.Wander;
                     }
+                    else if (Vector2.Distance(transform.position, player.transform.position) <= 5)
+                    {
+                        frogMode = EnemyFSM.Attack;
+                    }
                     break;
             }
         }

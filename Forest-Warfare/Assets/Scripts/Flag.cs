@@ -10,6 +10,7 @@ public class Flag : MonoBehaviour
     public Material shine;
 
     public Sprite raisedSprite;
+    public Sprite normalSprite;
 
     public bool checkpointReached = false;
 
@@ -28,22 +29,21 @@ public class Flag : MonoBehaviour
     public void SetRaised()
     {
         GetComponent<SpriteRenderer>().sprite = raisedSprite; 
-    } 
+    }  
     void Update()
     {
-        if (shineLight&&!alreadyShined)
-        { 
+        if (shineLight && !alreadyShined)
+        {
+            AudioManager.Play("CheckpointUnlock");
             GetComponent<SpriteRenderer>().material = shine;
             StartCoroutine(UnShine());
-        }
-        else
-        { 
-            GetComponent<SpriteRenderer>().material = normal;
-        }
+            alreadyShined = true;
+        } 
     }
     IEnumerator UnShine()
     {
         yield return new WaitForSeconds(0.2f);
-        alreadyShined = true;
+
+        GetComponent<SpriteRenderer>().material = normal;
     }
 }

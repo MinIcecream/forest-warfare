@@ -83108,6 +83108,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 9004313088191074731, guid: 92e8c045caf30b142939b3f3ee014dc7, type: 3}
   player: {fileID: 158901249}
   origin: {x: -25, y: 3}
+  levelName: 1
   recentCheckpoint: {fileID: 0}
 --- !u!4 &571604897
 Transform:
@@ -83178,6 +83179,7 @@ GameObject:
   m_Component:
   - component: {fileID: 622701264}
   - component: {fileID: 622701263}
+  - component: {fileID: 622701265}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -83215,6 +83217,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &622701265
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 622701262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc805283de62bf54a9a60bc156c07a56, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &622793653
 GameObject:
   m_ObjectHideFlags: 0
@@ -83313,9 +83327,9 @@ MonoBehaviour:
   pos2: {x: -50.41996, y: -13.15298}
   pos3: {x: 56.10003, y: -13.44598}
   inventoryWeapons:
-  - spear
-  - plasmaPistol
-  - sniper
+  - pistol
+  - 
+  - 
   weaponSlots:
   - {fileID: 1950480364}
   - {fileID: 638204647}
@@ -85024,6 +85038,7 @@ MonoBehaviour:
       name: Monkey
   fightIcon: {fileID: 1277272342}
   contArrow: {fileID: 1070307140}
+  right: 1
   enemiesToSave:
   - {fileID: 0}
   - {fileID: 0}
@@ -91793,5 +91808,9 @@ PrefabInstance:
       propertyPath: platform
       value: 
       objectReference: {fileID: 1922785062}
+    - target: {fileID: 9004313088215142834, guid: 92e8c045caf30b142939b3f3ee014dc7, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 92e8c045caf30b142939b3f3ee014dc7, type: 3}

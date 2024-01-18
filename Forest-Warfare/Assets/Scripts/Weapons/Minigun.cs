@@ -49,7 +49,7 @@ public class Minigun : ProjectileWeapon
             if (tempDelay > fireDelay)
             { 
                 tempDelay -= speed;
-                speed = Mathf.Pow(speed, 0.8f) * 0.6f;
+                speed = Mathf.Pow(speed, 0.8f) * 0.8f;
             }
             yield return new WaitForSeconds(tempDelay);
         }

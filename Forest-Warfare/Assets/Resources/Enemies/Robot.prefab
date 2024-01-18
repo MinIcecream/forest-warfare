@@ -649,7 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthBar: {fileID: 3717009987407384546}
-  startHealth: 1
+  startHealth: 2000
   indicate: 1
   invulnerable: 0
 --- !u!82 &6319023503847571823
@@ -930,7 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a32151e6ef44c8c4b9e04bd4306c2b39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  damage: 20
+  damage: 30
 --- !u!1 &8160944787826101285
 GameObject:
   m_ObjectHideFlags: 0

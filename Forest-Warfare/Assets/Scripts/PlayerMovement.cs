@@ -216,6 +216,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector3.zero;
             transform.position = new Vector2(transform.position.x, transform.position.y + .5f);
             rb.AddForce(jumpForce, ForceMode2D.Impulse);
+            AudioManager.Play("Jump");
         }
         jumpCounter--;
     }

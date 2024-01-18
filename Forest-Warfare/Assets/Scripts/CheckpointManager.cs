@@ -14,6 +14,8 @@ public class CheckpointManager : MonoBehaviour
     public GameObject player;
     public Vector2 origin;
 
+    public string levelName;
+
     public GameObject recentCheckpoint;
 
     public static CheckpointManager instance;
@@ -26,6 +28,13 @@ public class CheckpointManager : MonoBehaviour
     } 
     public List<enemy> enemies = new List<enemy>(); */
 
+    void Update()
+    {
+        if (SceneManager.GetActiveScene().name != levelName)
+        {
+            Destroy(gameObject); 
+        }
+    }
     void Awake()
     {
         if (instance == null)

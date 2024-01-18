@@ -65,8 +65,7 @@ public class LevelSelectMouseDrag : MonoBehaviour
         }
 
         if (leftPos > -20)
-        {
-            Debug.Log(leftPos);
+        { 
             transform.position = Camera.main.ScreenToWorldPoint(thisPos - new Vector3(leftPos, transform.position.y, 0));
         }
 

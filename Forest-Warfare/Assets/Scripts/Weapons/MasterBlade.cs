@@ -15,7 +15,7 @@ public class MasterBlade : MeleeWeapon
 
     public GameObject parent;
 
-    List<GameObject> hitEnemies = new List<GameObject>();
+    public List<GameObject> hitEnemies = new List<GameObject>();
 
     bool objChosen;
 
@@ -51,6 +51,7 @@ public class MasterBlade : MeleeWeapon
                     Slice(hitObject.transform.position);
                     StartCoroutine(Remove(hitObject));
                     hitObject.GetComponent<EnemyHealth>().DealDamage(slashDamage);
+                    AudioManager.Play("Slice");
                 } 
             }
         }

@@ -30,9 +30,12 @@ public class PauseManager : MonoBehaviour
     public void Pause()
     {
         if (!paused)
-        { 
-            GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
-            GameObject.FindWithTag("Player").GetComponent<SwapWeapon>().enabled = false;
+        {
+            if (GameObject.FindWithTag("Player") != null)
+            { 
+                GameObject.FindWithTag("Player").GetComponent<PlayerMovement>().enabled = false;
+                GameObject.FindWithTag("Player").GetComponent<SwapWeapon>().enabled = false;
+            } 
             gameObject.transform.GetChild(0).gameObject.SetActive(true);
             Time.timeScale = 0;
             paused = true; 
